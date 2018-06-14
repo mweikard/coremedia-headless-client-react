@@ -2,6 +2,7 @@
 .*/node_modules/
 .*/build/.*
 .*/__tests__/.*
+.*/__mocks__/.*
 
 [include]
 
