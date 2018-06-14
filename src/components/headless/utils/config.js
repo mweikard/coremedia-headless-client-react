@@ -1,8 +1,8 @@
 // @flow
-import * as Article from '../../components/bricks/CMArticle';
-import * as Teaser from '../../components/bricks/CMTeasable';
-import * as ShoppableVideo from '../../components/bricks/CMShoppableVideo';
-import type { Config } from '../../types';
+import * as Article from '../../bricks/Article';
+import * as Teaser from '../../bricks/Teasable';
+import * as ShoppableVideo from '../../bricks/ShoppableVideo';
+import type { Config } from '../../../types';
 
 type ConfigSet = {
   [show: string]: Config,
@@ -43,7 +43,7 @@ const config: ConfigSet = {
       };
     },
   },
-  video: {
+  shoppablevideo: {
     queryName: 'videos',
     viewName: null,
     module: ShoppableVideo,

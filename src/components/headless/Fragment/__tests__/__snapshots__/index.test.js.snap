@@ -1,7 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Fragment Container should render DetailArticle Component 1`] = `
-<DetailArticle
+exports[`Fragment Component should derive new state after receiving new props 1`] = `
+Object {
+  "Component": [Function],
+  "componentProps": Object {
+    "params": Object {
+      "color": "turquoise",
+      "ctaShow": true,
+    },
+    "pictureAlt": "Lego",
+    "pictureLink": "coremedia:///image/2658/data",
+    "pictureTitle": "Lego",
+    "text": "Manage content, master digital media &amp; handle eCommerce integrations with ease.",
+    "title": "The CoreMedia Content Experience Platform",
+    "url": "https://www.coremedia.com/en/platform",
+  },
+  "config": Object {
+    "createProps": [Function],
+    "module": Object {
+      "Hero": [Function],
+      "Square": [Function],
+      "Wide": [Function],
+    },
+    "queryName": "teasables",
+    "viewName": null,
+  },
+  "fragmentType": "teaser",
+  "viewType": "wide",
+}
+`;
+
+exports[`Fragment Component should derive new state after receiving new props 2`] = `
+Object {
+  "Component": [Function],
+  "viewType": "square",
+}
+`;
+
+exports[`Fragment Component should render DetailArticle Component 1`] = `
+<DetailArticleBrick
   params={
     Object {
       "color": "blue",
@@ -16,8 +53,8 @@ exports[`Fragment Container should render DetailArticle Component 1`] = `
 />
 `;
 
-exports[`Fragment Container should render HeroTeaser Component 1`] = `
-<HeroTeaser
+exports[`Fragment Component should render HeroTeaser Component 1`] = `
+<HeroTeaserBrick
   params={
     Object {
       "color": "blue",
@@ -34,13 +71,13 @@ exports[`Fragment Container should render HeroTeaser Component 1`] = `
 />
 `;
 
-exports[`Fragment Container should render ShoppableVideo Component 1`] = `
+exports[`Fragment Component should render ShoppableVideo Component 1`] = `
 <ShoppableVideoBrick
   autoplay={false}
-  controls={true}
+  hideControls={false}
   link="coremedia:///media/6200/data"
   loop={false}
-  muted={false}
+  mute={false}
   pictureAlt="Summer Dresses Shoppable Video Picture"
   pictureLink="coremedia:///image/6188/data"
   pictureTitle="Summer Dresses Shoppable Video Picture"
@@ -69,8 +106,8 @@ exports[`Fragment Container should render ShoppableVideo Component 1`] = `
 />
 `;
 
-exports[`Fragment Container should render SquareTeaser Component 1`] = `
-<SquareTeaser
+exports[`Fragment Component should render SquareTeaser Component 1`] = `
+<SquareTeaserBrick
   params={
     Object {
       "color": "red",
@@ -86,8 +123,8 @@ exports[`Fragment Container should render SquareTeaser Component 1`] = `
 />
 `;
 
-exports[`Fragment Container should render WideTeaser Component 1`] = `
-<WideTeaser
+exports[`Fragment Component should render WideTeaser Component 1`] = `
+<WideTeaserBrick
   params={
     Object {
       "color": "turquoise",
@@ -103,8 +140,6 @@ exports[`Fragment Container should render WideTeaser Component 1`] = `
 />
 `;
 
-exports[`Fragment Container should throw error, if the value of prop "params" can´t be parsed to JSON 1`] = `"Error parsing params value"`;
+exports[`Fragment Component should throw Error, if the value of prop "fragmentType" is unknown 1`] = `"No config found for fragmentType=\\"none\\"."`;
 
-exports[`Fragment Container should throw error, if the value of prop "show" is unknown 1`] = `"No config found for show=\\"none\\""`;
-
-exports[`Fragment Container should throw error, if the value of prop "view" is unknown 1`] = `"getFragment() failed"`;
+exports[`Fragment Component should throw Error, if the value of prop "viewType" is unknown 1`] = `"No matching component found."`;

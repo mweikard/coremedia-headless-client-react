@@ -1,16 +1,20 @@
 // @flow
 import React from 'react';
 
-import * as API from '../../../backend';
 import Fragment from '..';
+import * as Teaser from '../../../bricks/Teasable';
 
-jest.mock('../../../backend');
-
-describe('Fragment Container', () => {
+describe('Fragment Component', () => {
   beforeEach(() => {
     jest.resetModules();
+    jest.resetAllMocks();
     // Workaround for https://github.com/facebook/react/issues/11098
-    global.console.error = jest.fn().mockName('console.error');
+    jest.spyOn(console, 'error');
+    global.console.error.mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    global.console.error.mockRestore();
   });
 
   it('should render HeroTeaser Component', async () => {
@@ -28,19 +32,15 @@ describe('Fragment Container', () => {
         link: 'coremedia:///image/2656/data',
       },
     };
-    API.getFragment = jest.fn().mockReturnValue(Promise.resolve(data));
     const wrapper = shallow(
       <Fragment
-        id="home.hero"
-        show="teaser"
-        view="hero"
-        params={'{"color": "blue", "ctaShow": true, "url": "/caas.html"}'}
+        fragmentType="teaser"
+        viewType="hero"
+        data={data}
+        params={{ color: 'blue', ctaShow: true, url: '/caas.html' }}
       />
     );
-    await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(wrapper.state('data')).toEqual(data);
-    expect(wrapper.state('error')).toEqual(null);
-    expect(wrapper.update()).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should render SquareTeaser Component', async () => {
@@ -59,19 +59,15 @@ describe('Fragment Container', () => {
         link: 'coremedia:///image/2662/data',
       },
     };
-    API.getFragment = jest.fn().mockReturnValue(Promise.resolve(data));
     const wrapper = shallow(
       <Fragment
-        id="home.teaser-left"
-        show="teaser"
-        view="square"
-        params={'{"color": "red", "ctaShow": true}'}
+        fragmentType="teaser"
+        viewType="square"
+        data={data}
+        params={{ color: 'red', ctaShow: true }}
       />
     );
-    await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(wrapper.state('data')).toEqual(data);
-    expect(wrapper.state('error')).toEqual(null);
-    expect(wrapper.update()).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should render WideTeaser Component', async () => {
@@ -90,19 +86,15 @@ describe('Fragment Container', () => {
         link: 'coremedia:///image/2658/data',
       },
     };
-    API.getFragment = jest.fn().mockReturnValue(Promise.resolve(data));
     const wrapper = shallow(
       <Fragment
-        id="home.teaser-bottom"
-        show="teaser"
-        view="wide"
-        params={'{"color": "turquoise", "ctaShow": true}'}
+        fragmentType="teaser"
+        viewType="wide"
+        data={data}
+        params={{ color: 'turquoise', ctaShow: true }}
       />
     );
-    await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(wrapper.state('data')).toEqual(data);
-    expect(wrapper.state('error')).toEqual(null);
-    expect(wrapper.update()).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should render DetailArticle Component', async () => {
@@ -120,14 +112,10 @@ describe('Fragment Container', () => {
         },
       ],
     };
-    API.getFragment = jest.fn().mockReturnValue(Promise.resolve(data));
     const wrapper = shallow(
-      <Fragment id="caas.article" show="article" view="detail" params={'{"color": "blue"}'} />
+      <Fragment fragmentType="article" viewType="detail" data={data} params={{ color: 'blue' }} />
     );
-    await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(wrapper.state('data')).toEqual(data);
-    expect(wrapper.state('error')).toEqual(null);
-    expect(wrapper.update()).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should render ShoppableVideo Component', async () => {
@@ -160,76 +148,178 @@ describe('Fragment Container', () => {
         ],
       },
     };
-    API.getFragment = jest.fn().mockReturnValue(Promise.resolve(data));
-    const wrapper = shallow(<Fragment id="video.shoppable-video" show="video" view="teaser" />);
-    await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(wrapper.state('data')).toEqual(data);
-    expect(wrapper.state('error')).toEqual(null);
-    expect(wrapper.update()).toMatchSnapshot();
+    const wrapper = shallow(
+      <Fragment fragmentType="shoppablevideo" viewType="teaser" data={data} />
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it('should throw error, if getFragment() fails', async () => {
-    const error = new Error('getFragment() failed');
-    API.getFragment = jest.fn().mockImplementation(() => {
-      throw error;
-    });
-
-    const shallowFragment = () => {
-      mount(
-        <Fragment
-          id="home.hero"
-          show="teaser"
-          view="hero"
-          params={'{"color": "blue", "ctaShow": true, "url": "/caas.html"}'}
-        />
-      );
+  it('should update after receiving new props', async () => {
+    const data = {
+      teaserTitle: 'The CoreMedia Content Experience Platform',
+      teaserText:
+        'Manage content, master digital media &amp; handle eCommerce integrations with ease.',
+      teaserTarget: {
+        title: '',
+        segment: '',
+        link: 'https://www.coremedia.com/en/platform',
+      },
+      picture: {
+        title: 'Lego',
+        alt: 'Lego',
+        link: 'coremedia:///image/2658/data',
+      },
     };
-
-    expect(shallowFragment).toThrow(error);
+    const props = {
+      fragmentType: 'teaser',
+      viewType: 'wide',
+      data: data,
+      params: { color: 'turquoise', ctaShow: true },
+    };
+    const wrapper = shallow(<Fragment {...props} />);
+    const newProps = Object.assign(props, { viewType: 'square' });
+    const shouldUpdate = wrapper.instance().shouldComponentUpdate(newProps);
+    expect(shouldUpdate).toBe(true);
   });
 
-  it('should throw error, if the value of prop "show" is unknown', async () => {
-    const shallowFragment = () => {
-      mount(
-        <Fragment
-          id="home.hero"
-          show="none"
-          view="any"
-          params={'{"color": "blue", "ctaShow": true, "url": "/caas.html"}'}
-        />
-      );
+  it('should not update after receiving new props', async () => {
+    const data = {
+      teaserTitle: 'The CoreMedia Content Experience Platform',
+      teaserText:
+        'Manage content, master digital media &amp; handle eCommerce integrations with ease.',
+      teaserTarget: {
+        title: '',
+        segment: '',
+        link: 'https://www.coremedia.com/en/platform',
+      },
+      picture: {
+        title: 'Lego',
+        alt: 'Lego',
+        link: 'coremedia:///image/2658/data',
+      },
     };
-
-    expect(shallowFragment).toThrowErrorMatchingSnapshot();
+    const props = {
+      fragmentType: 'teaser',
+      viewType: 'wide',
+      data: data,
+      params: { color: 'turquoise', ctaShow: true },
+    };
+    const wrapper = shallow(<Fragment {...props} />);
+    const shouldUpdate = wrapper.instance().shouldComponentUpdate(props);
+    expect(shouldUpdate).toBe(false);
   });
 
-  it('should throw error, if the value of prop "view" is unknown', async () => {
-    const shallowFragment = () => {
-      mount(
-        <Fragment
-          id="home.hero"
-          show="teaser"
-          view="any"
-          params={'{"color": "blue", "ctaShow": true, "url": "/caas.html"}'}
-        />
-      );
+  it('should derive new state after receiving new props', async () => {
+    const data = {
+      teaserTitle: 'The CoreMedia Content Experience Platform',
+      teaserText:
+        'Manage content, master digital media &amp; handle eCommerce integrations with ease.',
+      teaserTarget: {
+        title: '',
+        segment: '',
+        link: 'https://www.coremedia.com/en/platform',
+      },
+      picture: {
+        title: 'Lego',
+        alt: 'Lego',
+        link: 'coremedia:///image/2658/data',
+      },
     };
-
-    expect(shallowFragment).toThrowErrorMatchingSnapshot();
+    let props = {
+      fragmentType: 'teaser',
+      viewType: 'wide',
+      data: data,
+      params: { color: 'turquoise', ctaShow: true },
+    };
+    let state = {};
+    let derivedState = Fragment.getDerivedStateFromProps(props, state);
+    expect(derivedState).toMatchSnapshot();
+    state = { ...state, ...derivedState };
+    props = { ...props, viewType: 'square' };
+    derivedState = Fragment.getDerivedStateFromProps(props, state);
+    expect(derivedState).toMatchSnapshot();
   });
 
-  it('should throw error, if the value of prop "params" can´t be parsed to JSON', async () => {
-    const shallowFragment = () => {
-      mount(
-        <Fragment
-          id="home.hero"
-          show="teaser"
-          view="hero"
-          params={'{"color": "blue", "ctaShow": true, "url": "/caas.html"'}
-        />
-      );
+  it('should not derive new state after receiving new props', async () => {
+    const data = {
+      teaserTitle: 'The CoreMedia Content Experience Platform',
+      teaserText:
+        'Manage content, master digital media &amp; handle eCommerce integrations with ease.',
+      teaserTarget: {
+        title: '',
+        segment: '',
+        link: 'https://www.coremedia.com/en/platform',
+      },
+      picture: {
+        title: 'Lego',
+        alt: 'Lego',
+        link: 'coremedia:///image/2658/data',
+      },
     };
+    const props = {
+      fragmentType: 'teaser',
+      viewType: 'wide',
+      data: data,
+      params: { color: 'turquoise', ctaShow: true },
+    };
+    const state = Fragment.getDerivedStateFromProps(props, {});
+    let derivedState = Fragment.getDerivedStateFromProps(props, state);
+    expect(derivedState).toBe(null);
+    derivedState = Fragment.getDerivedStateFromProps({ ...props, viewType: 'square' }, state);
+    const expected = {
+      Component: Teaser.Square,
+      viewType: 'square',
+    };
+    expect(derivedState).toEqual(expected);
+  });
 
-    expect(shallowFragment).toThrowErrorMatchingSnapshot();
+  it('should not derive new state after receiving new props', async () => {
+    const props = {
+      viewType: 'wide',
+    };
+    const derivedState = Fragment.getDerivedStateFromProps(props, {});
+    expect(derivedState).toBe(null);
+  });
+
+  it('should throw Error, if the value of prop "fragmentType" is unknown', async () => {
+    const props = {
+      fragmentType: 'none',
+      viewType: 'any',
+      data: {},
+    };
+    const state = {};
+    const callGetDerivedStateFromProps = () => Fragment.getDerivedStateFromProps(props, state);
+    expect(callGetDerivedStateFromProps).toThrowErrorMatchingSnapshot();
+  });
+
+  it('should throw Error, if the value of prop "viewType" is unknown', async () => {
+    const props = {
+      fragmentType: 'teaser',
+      viewType: 'any',
+      data: {
+        teaserTitle: 'The CoreMedia Content Experience Platform',
+        teaserText:
+          'Manage content, master digital media &amp; handle eCommerce integrations with ease.',
+        teaserTarget: {
+          title: '',
+          segment: '',
+          link: 'https://www.coremedia.com/en/platform',
+        },
+        picture: {
+          title: 'Lego',
+          alt: 'Lego',
+          link: 'coremedia:///image/2658/data',
+        },
+      },
+    };
+    const state = {};
+    const callGetDerivedStateFromProps = () => Fragment.getDerivedStateFromProps(props, state);
+    expect(callGetDerivedStateFromProps).toThrowErrorMatchingSnapshot();
+  });
+
+  it('should render null, if fragmentType and viewType are undefined', async () => {
+    const shallowFragment = shallow(<Fragment fragmentType={undefined} viewType={undefined} />);
+
+    expect(shallowFragment.equals(null)).toBe(true);
   });
 });

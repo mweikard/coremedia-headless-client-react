@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponent() should throw Error 1`] = `"No matching component found."`;
