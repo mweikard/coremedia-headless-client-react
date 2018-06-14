@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Picture Component default context should render correctly 1`] = `
+<picture>
+  <source
+    key="0"
+    media="(min-width: 1280px)"
+    srcSet="http://127.0.0.1:8080/media/2662/data"
+  />
+  <source
+    key="1"
+    media="(min-width: 992px)"
+    srcSet="http://127.0.0.1:8080/media/2662/data"
+  />
+  <source
+    key="2"
+    media="(min-width: 768px)"
+    srcSet="http://127.0.0.1:8080/media/2662/data"
+  />
+  <source
+    key="3"
+    media="(min-width: 480px)"
+    srcSet="http://127.0.0.1:8080/media/2662/data"
+  />
+  <BasicImg
+    src="http://127.0.0.1:8080/media/2662/data"
+    title="Scrum"
+  />
+</picture>
+`;
+
+exports[`Picture Component headless context should render correctly 1`] = `
+<picture>
+  <source
+    key="0"
+    media="(min-width: 1280px)"
+    srcSet="coremedia:///image/2662/data"
+  />
+  <source
+    key="1"
+    media="(min-width: 992px)"
+    srcSet="coremedia:///image/2662/data"
+  />
+  <source
+    key="2"
+    media="(min-width: 768px)"
+    srcSet="coremedia:///image/2662/data"
+  />
+  <source
+    key="3"
+    media="(min-width: 480px)"
+    srcSet="coremedia:///image/2662/data"
+  />
+  <BasicImg
+    src="coremedia:///image/2662/data"
+    title="Scrum"
+  />
+</picture>
+`;
+
+exports[`Picture Component headless context should render correctly and skip breakpoint large 1`] = `
+<picture>
+  <source
+    key="0"
+    media="(min-width: 992px)"
+    srcSet="coremedia:///image/2662/data"
+  />
+  <source
+    key="1"
+    media="(min-width: 768px)"
+    srcSet="coremedia:///image/2662/data"
+  />
+  <source
+    key="2"
+    media="(min-width: 480px)"
+    srcSet="coremedia:///image/2662/data"
+  />
+  <BasicImg
+    src="coremedia:///image/2662/data"
+    title="Scrum"
+  />
+</picture>
+`;
+
+exports[`Picture Component headless context should render correctly with ratio thumbnail 1`] = `
+<BasicImg
+  src="coremedia:///image/2662/data"
+  title="Scrum"
+/>
+`;
+
+exports[`Picture Component headless context should render correctly without <sources> element 1`] = `
+<picture>
+  <BasicImg
+    src="coremedia:///image/2662/data"
+    title="Scrum"
+  />
+</picture>
+`;

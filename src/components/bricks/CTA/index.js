@@ -9,12 +9,12 @@ type Props = {
   text: string,
 };
 
-const CTA = ({ url, text }: Props) =>
+const CTABrick = ({ url, text }: Props) =>
   url && url.length > 0 ? <LinkButton href={url}>{text}</LinkButton> : <Button>{text}</Button>;
 
-CTA.propTypes = {
+CTABrick.propTypes = {
   url: PropTypes.string,
   text: PropTypes.string.isRequired,
 };
 
-export default CTA;
+export default CTABrick;

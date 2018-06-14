@@ -6,14 +6,14 @@ import HtmlToReact from 'html-to-react';
 import { H1, H2, H3 } from './Heading';
 import { P } from './Paragraph';
 import { Wrapper, PictureWrapper } from './Wrapper';
-import Picture from '../CMPicture';
+import Picture from '../Picture';
 
 type Props = {
   text: string,
   color?: string,
 };
 
-const Richtext = ({ text, color }: Props) => {
+const RichtextBrick = ({ text, color }: Props) => {
   const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions(React);
   const processingInstructions = [
     {
@@ -53,7 +53,7 @@ const Richtext = ({ text, color }: Props) => {
         return node.name === 'img';
       },
       processNode: function(node, children, index) {
-        const src = node.attribs['cms-src'];
+        const src = node.attribs['cms-src'] || node.attribs['src'];
         const alt = node.attribs['alt'];
         return (
           <PictureWrapper key={index}>
@@ -84,9 +84,9 @@ const Richtext = ({ text, color }: Props) => {
   return <Wrapper>{reactComponent}</Wrapper>;
 };
 
-Richtext.propTypes = {
+RichtextBrick.propTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
 };
 
-export default Richtext;
+export default RichtextBrick;

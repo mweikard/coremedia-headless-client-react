@@ -12,7 +12,6 @@ exports[`CloseIcon Component should render correctly with color #000 1`] = `
   aria-labelledby="ID"
   className="c0"
   role="img"
-  size={undefined}
   viewBox="0 0 512 512"
 >
   <title
@@ -39,7 +38,6 @@ exports[`CloseIcon Component should render correctly with default props 1`] = `
   aria-labelledby="ID"
   className="c0"
   role="img"
-  size={undefined}
   viewBox="0 0 512 512"
 >
   <title

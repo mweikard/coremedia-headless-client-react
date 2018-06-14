@@ -1,2 +1,2 @@
 // @flow
-export default jest.fn().mockReturnValue('ID');
+export default jest.fn(() => 'ID');
