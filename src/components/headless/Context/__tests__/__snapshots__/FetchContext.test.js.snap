@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FetchContext should render correctly with default value 1`] = `null`;
+
+exports[`FetchContext should render correctly with provided value 1`] = `"TEST"`;

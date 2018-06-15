@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MediaContext should render correctly with default value 1`] = `"http://localhost/image.jpg"`;
+
+exports[`MediaContext should render correctly with provided value 1`] = `"http://localhost/media/7564/data"`;
