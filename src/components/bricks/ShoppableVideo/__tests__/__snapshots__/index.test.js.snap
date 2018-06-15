@@ -14,6 +14,182 @@ Object {
 }
 `;
 
+exports[`ShoppableVideoBrick Component getDerivedStateFromProps() should return new state with calculated numberOfItems and sequences 1`] = `
+Object {
+  "data": Object {
+    "numberOfItems": 3,
+    "prevTimeLine": Object {
+      "sequences": Array [
+        Object {
+          "startTimeMillis": 3000,
+          "target": Object {
+            "items": Array [
+              Object {
+                "_id": "coremedia:///cap/content/6268",
+                "picture": Object {
+                  "alt": "Comfort Sports Leggings",
+                  "link": "coremedia:///image/6266/data",
+                  "title": "Comfort Sports Leggings",
+                },
+                "price": 37.99,
+                "teaserText": "Be ready for the gym with these comfortable sports leggings from our DK collection. They are made from very breathable fabric that feels nice and light during sports and exercise. Combine with matching items from the HKMX DK collection.",
+                "teaserTitle": "HKMX DK Comfort Sports Leggings",
+              },
+              Object {
+                "_id": "coremedia:///cap/content/6232",
+                "picture": Object {
+                  "alt": "The All Star Level 2 Bra",
+                  "link": "coremedia:///image/6208/data",
+                  "title": "The All Star Level 2 Bra",
+                },
+                "price": 37.99,
+                "teaserText": "This DK sports bra features a pretty floral print for a feminine touch. This level 2 sports bra provides medium support for fairly intensive exercise such as jogging and running.",
+                "teaserTitle": "HKMX DK The All Star Level 2 Bra",
+              },
+            ],
+          },
+        },
+        Object {
+          "startTimeMillis": 18000,
+          "target": Object {
+            "_id": "coremedia:///cap/content/6196",
+            "picture": Object {
+              "alt": "Sweater",
+              "link": "coremedia:///image/6226/data",
+              "title": "Sweater",
+            },
+            "price": 42.99,
+            "teaserText": "This warm sweater from our Doutzen collection is ideal for wearing after your workout. It will keep nice and warm even on cold days. Combine with matching items from the DK collection.",
+            "teaserTitle": "HKMX DK Sweater",
+          },
+        },
+      ],
+    },
+    "sequences": Array [
+      Object {
+        "index": 0,
+        "startTimeMillis": 3000,
+        "target": Object {
+          "items": Array [
+            Object {
+              "_id": "coremedia:///cap/content/6268",
+              "picture": Object {
+                "alt": "Comfort Sports Leggings",
+                "link": "coremedia:///image/6266/data",
+                "title": "Comfort Sports Leggings",
+              },
+              "price": 37.99,
+              "teaserText": "Be ready for the gym with these comfortable sports leggings from our DK collection. They are made from very breathable fabric that feels nice and light during sports and exercise. Combine with matching items from the HKMX DK collection.",
+              "teaserTitle": "HKMX DK Comfort Sports Leggings",
+            },
+            Object {
+              "_id": "coremedia:///cap/content/6232",
+              "picture": Object {
+                "alt": "The All Star Level 2 Bra",
+                "link": "coremedia:///image/6208/data",
+                "title": "The All Star Level 2 Bra",
+              },
+              "price": 37.99,
+              "teaserText": "This DK sports bra features a pretty floral print for a feminine touch. This level 2 sports bra provides medium support for fairly intensive exercise such as jogging and running.",
+              "teaserTitle": "HKMX DK The All Star Level 2 Bra",
+            },
+          ],
+        },
+      },
+      Object {
+        "index": 1,
+        "startTimeMillis": 18000,
+        "target": Object {
+          "_id": "coremedia:///cap/content/6196",
+          "picture": Object {
+            "alt": "Sweater",
+            "link": "coremedia:///image/6226/data",
+            "title": "Sweater",
+          },
+          "price": 42.99,
+          "teaserText": "This warm sweater from our Doutzen collection is ideal for wearing after your workout. It will keep nice and warm even on cold days. Combine with matching items from the DK collection.",
+          "teaserTitle": "HKMX DK Sweater",
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`ShoppableVideoBrick Component getDerivedStateFromProps() should return new state with numberOfItems = 0 and sequences = [] 1`] = `
+Object {
+  "numberOfItems": 0,
+  "prevTimeLine": Object {
+    "sequences": null,
+  },
+  "sequences": Array [],
+}
+`;
+
+exports[`ShoppableVideoBrick Component should initialize state correctly 1`] = `
+Object {
+  "data": Object {
+    "numberOfItems": 1,
+    "prevTimeLine": Object {
+      "sequences": Array [
+        Object {
+          "startTimeMillis": 18000,
+          "target": Object {
+            "_id": "coremedia:///cap/content/6196",
+            "picture": Object {
+              "alt": "Sweater",
+              "link": "coremedia:///image/6226/data",
+              "title": "Sweater",
+            },
+            "price": 42.99,
+            "teaserText": "This warm sweater from our Doutzen collection is ideal for wearing after your workout. It will keep nice and warm even on cold days. Combine with matching items from the DK collection.",
+            "teaserTitle": "HKMX DK Sweater",
+          },
+        },
+      ],
+    },
+    "sequences": Array [
+      Object {
+        "index": 0,
+        "startTimeMillis": 18000,
+        "target": Object {
+          "_id": "coremedia:///cap/content/6196",
+          "picture": Object {
+            "alt": "Sweater",
+            "link": "coremedia:///image/6226/data",
+            "title": "Sweater",
+          },
+          "price": 42.99,
+          "teaserText": "This warm sweater from our Doutzen collection is ideal for wearing after your workout. It will keep nice and warm even on cold days. Combine with matching items from the DK collection.",
+          "teaserTitle": "HKMX DK Sweater",
+        },
+      },
+    ],
+  },
+  "productBoard": Object {
+    "display": false,
+    "overflow": false,
+  },
+  "thumbnailBar": Object {
+    "currentIndex": -1,
+    "prevItems": 0,
+    "range": 0,
+    "selectedItem": null,
+    "thumbWidth": 0,
+    "translateX": 0,
+  },
+  "video": Object {
+    "duration": 0,
+    "ended": false,
+    "pausedByModal": false,
+    "playing": false,
+  },
+  "wrapper": Object {
+    "width": 0,
+  },
+}
+`;
+
 exports[`ShoppableVideoBrick Component should render correctly 1`] = `
 <Wrapper
   innerRef={[Function]}

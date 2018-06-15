@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
+import memoize from 'memoize-one';
 
 import Wrapper from './Wrapper';
 import ThumbnailBar from './ThumbnailBar';
@@ -22,19 +23,32 @@ type Props = {
 };
 
 type State = {
-  index: number,
-  range: number,
-  prevItems: number,
-  shoppableWrapperWidth: number,
-  thumbWidth: number,
-  thumbsTranslateX: number,
-  productboardOverflow: boolean,
-  selectedItem: ?Object,
-  playing: boolean,
-  ended: boolean,
-  pausedByModal: boolean,
-  duration: number,
-  startCrossFade: boolean,
+  wrapper: {
+    width: number,
+  },
+  video: {
+    playing: boolean,
+    ended: boolean,
+    pausedByModal: boolean,
+    duration: number,
+  },
+  thumbnailBar: {
+    currentIndex: number,
+    range: number,
+    prevItems: number,
+    selectedItem: ?Object,
+    thumbWidth: number,
+    translateX: number,
+  },
+  productBoard: {
+    overflow: boolean,
+    display: boolean,
+  },
+  data: {
+    prevTimeLine: ?Object,
+    sequences: Array<Object>,
+    numberOfItems: number,
+  },
 };
 
 class ShoppableVideoBrick extends React.PureComponent<Props, State> {
@@ -58,19 +72,32 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
   };
 
   state = {
-    index: -1,
-    range: 0,
-    prevItems: 0,
-    shoppableWrapperWidth: 0,
-    thumbWidth: 0,
-    thumbsTranslateX: 0,
-    productboardOverflow: false,
-    selectedItem: null,
-    playing: !!this.props.autoplay,
-    ended: false,
-    pausedByModal: false,
-    duration: 0,
-    startCrossFade: false,
+    wrapper: {
+      width: 0,
+    },
+    video: {
+      playing: !!this.props.autoplay,
+      ended: false,
+      pausedByModal: false,
+      duration: 0,
+    },
+    thumbnailBar: {
+      currentIndex: -1,
+      range: 0,
+      prevItems: 0,
+      selectedItem: null,
+      thumbWidth: 0,
+      translateX: 0,
+    },
+    productBoard: {
+      overflow: false,
+      display: false,
+    },
+    data: {
+      prevTimeLine: null,
+      sequences: [],
+      numberOfItems: 0,
+    },
   };
 
   _resizeTimer = null;
@@ -80,27 +107,15 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
   _thumbnailsBox = null;
   _productboardContainer = null;
 
-  _sequences = (this.props.timeLine && Array.isArray(this.props.timeLine.sequences)
-    ? this.props.timeLine.sequences
-    : []
-  )
-    .sort((a, b) => a.startTimeMillis - b.startTimeMillis)
-    .map((item, index) => Object.assign({}, item, { index }));
-
-  _itemCount = this._sequences.reduce(
-    (acc, item) => acc + (item.target.items ? item.target.items.length : 1),
-    0
-  );
-
   _getThumbsTranslate = (factor: number): number => {
-    const { shoppableWrapperWidth } = this.state;
+    const { wrapper, thumbnailBar } = this.state;
 
     if (this._thumbnailsBox) {
-      if (this._thumbnailsBox.scrollWidth <= shoppableWrapperWidth || shoppableWrapperWidth <= 0) {
+      if (this._thumbnailsBox.scrollWidth <= wrapper.width || wrapper.width <= 0) {
         return 0;
       }
-      const totalScroll = this._thumbnailsBox.scrollWidth - shoppableWrapperWidth;
-      const factorScroll = factor * this.state.thumbWidth - shoppableWrapperWidth * 0.5;
+      const totalScroll = this._thumbnailsBox.scrollWidth - wrapper.width;
+      const factorScroll = factor * thumbnailBar.thumbWidth - wrapper.width * 0.5;
 
       return factorScroll < 0 ? 0 : (factorScroll < totalScroll ? factorScroll : totalScroll) * -1;
     }
@@ -108,12 +123,13 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
   };
 
   _updateThumbnailTranslate = () => {
-    if (this.state.prevItems === 0) {
-      this.setState(prevState => ({ thumbsTranslateX: 0 }));
+    const { prevItems, range } = this.state.thumbnailBar;
+    if (prevItems === 0) {
+      this.setState(prevState => ({ thumbnailBar: { ...prevState.thumbnailBar, translateX: 0 } }));
     } else {
-      const factor = this.state.prevItems + this.state.range * 0.5;
-      const thumbsTranslateX = this._getThumbsTranslate(factor);
-      this.setState(prevState => ({ thumbsTranslateX }));
+      const factor = prevItems + range * 0.5;
+      const translateX = this._getThumbsTranslate(factor);
+      this.setState(prevState => ({ thumbnailBar: { ...prevState.thumbnailBar, translateX } }));
     }
   };
 
@@ -126,36 +142,45 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
   };
 
   _updateProductBoardOverflow = () => {
-    const productboardOverflow = this._hasProductBoardOverflow();
+    const overflow = this._hasProductBoardOverflow();
     this.setState(prevState => ({
-      productboardOverflow,
+      productBoard: {
+        ...prevState.productBoard,
+        overflow,
+      },
     }));
   };
 
   _updateShoppableWrapperWidth = () => {
     if (this._wrapper) {
-      const shoppableWrapperWidth = this._wrapper.offsetWidth;
+      const width = this._wrapper.offsetWidth;
       this.setState(prevState => ({
-        shoppableWrapperWidth,
+        wrapper: {
+          ...prevState.wrapper,
+          width,
+        },
       }));
     }
   };
 
   _updateThumbWidth = () => {
-    if (this._thumbnailsBox && this._itemCount) {
-      const thumbWidth = this._thumbnailsBox.scrollWidth / this._itemCount;
-      this.setState(prevState => ({ thumbWidth }));
+    if (this._thumbnailsBox && this.state.data.numberOfItems) {
+      const thumbWidth = this._thumbnailsBox.scrollWidth / this.state.data.numberOfItems;
+      this.setState(prevState => ({ thumbnailBar: { ...prevState.thumbnailBar, thumbWidth } }));
     }
   };
 
-  _createThumbnailProps = (index: number, item: Object) => {
+  _createThumbnailProps = (
+    index: number,
+    item: Object,
+    videoEnded: boolean,
+    selectedItemId: string,
+    currentIndex: number
+  ) => {
     const id = `${item._id}_${index}`;
     const props = {
       id,
-      active:
-        ((this.state.selectedItem && this.state.selectedItem.id === id) ||
-          index === this.state.index) &&
-        !this.state.ended,
+      active: (selectedItemId === id || index === currentIndex) && !videoEnded,
       teaserTitle: item.teaserTitle,
       teaserText: item.teaserText,
       pictureLink: item.picture.link,
@@ -167,50 +192,83 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
       ...props,
       handleClick: (ev: SyntheticEvent<HTMLButtonElement>) =>
         this.setState(prevState => ({
-          selectedItem: props,
-          playing: false,
-          pausedByModal: prevState.playing,
+          thumbnailBar: {
+            ...prevState.thumbnailBar,
+            selectedItem: props,
+          },
+          video: {
+            ...prevState.video,
+            playing: false,
+            pausedByModal: prevState.video.playing,
+          },
         })),
     };
   };
 
   _handleProgress = (playedSeconds: number) => {
-    const filtered = this._sequences.filter(
+    const { video, data } = this.state;
+    const filtered = data.sequences.filter(
       ({ startTimeMillis }) => !!playedSeconds && startTimeMillis / 1000 <= playedSeconds
     );
     const prevItems = filtered
       .slice(0, -1)
       .reduce((acc, item) => acc + (item.target.items ? item.target.items.length : 1), 0);
     const current = filtered.length ? filtered.pop() : undefined;
-    const index = !current ? -1 : current.index;
+    const currentIndex = !current ? -1 : current.index;
     const range = !current ? 0 : current.target.items ? current.target.items.length : 1;
-    const startCrossFade = !!this.state.duration && this.state.duration - playedSeconds <= 1;
-    const productboardOverflow = startCrossFade && this._hasProductBoardOverflow();
-    this.setState(prevState => ({ index, range, prevItems, startCrossFade, productboardOverflow }));
+
+    const productBoardDisplay = !!video.duration && video.duration - playedSeconds <= 1;
+    const productBoardOverflow = productBoardDisplay && this._hasProductBoardOverflow();
+
+    this.setState(prevState => ({
+      thumbnailBar: {
+        ...prevState.thumbnailBar,
+        currentIndex,
+        range,
+        prevItems,
+      },
+      productBoard: {
+        ...prevState.productBoard,
+        display: productBoardDisplay,
+        overflow: productBoardOverflow,
+      },
+    }));
   };
 
   _handleDuration = (duration: number) => {
     this.setState(prevState => ({
-      duration,
+      video: {
+        ...prevState.video,
+        duration,
+      },
     }));
   };
 
   _handlePlay = () => {
     this.setState(prevState => ({
-      playing: true,
-      ended: false,
+      video: {
+        ...prevState.video,
+        playing: true,
+        ended: false,
+      },
     }));
   };
 
   _handlePause = () => {
     this.setState(prevState => ({
-      playing: false,
+      video: {
+        ...prevState.video,
+        playing: false,
+      },
     }));
   };
 
   _handleEnded = () => {
     this.setState(prevState => ({
-      ended: true,
+      video: {
+        ...prevState.video,
+        ended: true,
+      },
     }));
   };
 
@@ -226,9 +284,15 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
 
   _handleCloseQuickInfo = (ev: SyntheticEvent<HTMLButtonElement>) =>
     this.setState(prevState => ({
-      selectedItem: null,
-      playing: prevState.pausedByModal,
-      pausedByModal: false,
+      thumbnailBar: {
+        ...prevState.thumbnailBar,
+        selectedItem: null,
+      },
+      video: {
+        ...prevState.video,
+        playing: prevState.video.pausedByModal,
+        pausedByModal: false,
+      },
     }));
 
   _handleWrapperRef = (el: ?HTMLElement) => (this._wrapper = el);
@@ -236,6 +300,50 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
   _handleThumbnailsBoxRef = (el: ?HTMLElement) => (this._thumbnailsBox = el);
 
   _handleProductboardContainerRef = (el: ?HTMLElement) => (this._productboardContainer = el);
+
+  _getThumbnails = memoize((sequences, videoEnded, selectedItemId, currentIndex) =>
+    sequences
+      .map(({ index, target }: { index: number, target: Object }) => {
+        if (target.items) {
+          return target.items.map(item =>
+            this._createThumbnailProps(index, item, videoEnded, selectedItemId, currentIndex)
+          );
+        }
+        return [
+          this._createThumbnailProps(index, target, videoEnded, selectedItemId, currentIndex),
+        ];
+      })
+      .reduce((acc, item) => acc.concat(item), [])
+  );
+
+  static getDerivedStateFromProps(props: Props, state: State) {
+    if (props.timeLine !== state.data.prevTimeLine) {
+      if (props.timeLine && Array.isArray(props.timeLine.sequences)) {
+        const sequences = props.timeLine.sequences
+          .sort((a, b) => a.startTimeMillis - b.startTimeMillis)
+          .map((item, index) => Object.assign({}, item, { index }));
+
+        const numberOfItems = sequences.reduce(
+          (acc, item) => acc + (item.target.items ? item.target.items.length : 1),
+          0
+        );
+
+        return {
+          data: {
+            prevTimeLine: props.timeLine,
+            sequences,
+            numberOfItems,
+          },
+        };
+      }
+      return {
+        prevTimeLine: props.timeLine,
+        sequences: [],
+        numberOfItems: 0,
+      };
+    }
+    return null;
+  }
 
   componentDidMount() {
     // Used to update the throttle if slideDuration changes
@@ -247,15 +355,15 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
-    if (prevState.shoppableWrapperWidth !== this.state.shoppableWrapperWidth) {
+    if (prevState.wrapper.width !== this.state.wrapper.width) {
       this._handleResize();
     } else {
-      if (prevState.index !== this.state.index) {
+      if (prevState.thumbnailBar.currentIndex !== this.state.thumbnailBar.currentIndex) {
         this._updateThumbnailTranslate();
       }
       /* if (
         this._thumbnailsBox &&
-        this.state.thumbWidth !== this._thumbnailsBox.scrollWidth / this._itemCount
+        this.state.thumbWidth !== this._thumbnailsBox.scrollWidth / this._numberOfItems
       ) {
         this._updateThumbWidth();
       } */
@@ -277,30 +385,19 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
 
   render() {
     const { link, loop, mute, hideControls, pictureLink, pictureTitle, pictureAlt } = this.props;
-    const {
-      prevItems,
-      range,
-      thumbWidth,
-      thumbsTranslateX,
-      productboardOverflow,
-      selectedItem,
-      playing,
-      startCrossFade,
-    } = this.state;
-    const thumbnails = this._sequences
-      .map(({ index, target }: { index: number, target: Object }) => {
-        if (target.items) {
-          return target.items.map(item => this._createThumbnailProps(index, item));
-        }
-        return [this._createThumbnailProps(index, target)];
-      })
-      .reduce((acc, item) => acc.concat(item), []);
+    const { video, thumbnailBar, productBoard, data } = this.state;
+    const thumbnails = this._getThumbnails(
+      data.sequences,
+      video.ended,
+      thumbnailBar.selectedItem && thumbnailBar.selectedItem.id,
+      thumbnailBar.currentIndex
+    );
     return (
       <Wrapper innerRef={this._handleWrapperRef}>
         <Video
-          show={!startCrossFade}
+          show={!productBoard.display}
           link={link}
-          playing={playing}
+          playing={video.playing}
           loop={loop}
           mute={mute}
           hideControls={hideControls}
@@ -314,22 +411,22 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
           handleDuration={this._handleDuration}
         />
         <ThumbnailBar
-          translateX={thumbsTranslateX}
+          translateX={thumbnailBar.translateX}
           thumbnails={thumbnails}
           handleRef={this._handleThumbnailsBoxRef}
-          prevItems={prevItems}
-          range={range}
-          thumbWidth={thumbWidth}
+          prevItems={thumbnailBar.prevItems}
+          range={thumbnailBar.range}
+          thumbWidth={thumbnailBar.thumbWidth}
         />
-        {startCrossFade && (
+        {productBoard.display && (
           <ProductBoard
             thumbnails={thumbnails}
-            productboardOverflow={productboardOverflow}
+            productboardOverflow={productBoard.overflow}
             handleRef={this._handleProductboardContainerRef}
             handleReplay={this._handlePlay}
           />
         )}
-        <QuickInfo item={selectedItem} handleClose={this._handleCloseQuickInfo} />
+        <QuickInfo item={thumbnailBar.selectedItem} handleClose={this._handleCloseQuickInfo} />
       </Wrapper>
     );
   }

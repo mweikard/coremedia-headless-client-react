@@ -8,6 +8,13 @@ const { Teaser } = require('../');
 describe('ShoppableVideoBrick Component', () => {
   beforeEach(() => {
     jest.clearAllTimers();
+    // Workaround for https://github.com/facebook/react/issues/11098
+    jest.spyOn(console, 'error');
+    global.console.error.mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    global.console.error.mockRestore();
   });
 
   it('should render correctly', () => {
@@ -93,49 +100,34 @@ describe('ShoppableVideoBrick Component', () => {
       ],
     };
     const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" timeLine={timeLine} />);
-    const expected = {
-      index: -1,
-      range: 0,
-      prevItems: 0,
-      shoppableWrapperWidth: 0,
-      thumbWidth: 0,
-      thumbsTranslateX: 0,
-      productboardOverflow: false,
-      selectedItem: null,
-      playing: false,
-      ended: false,
-      pausedByModal: false,
-      duration: 0,
-      startCrossFade: false,
-    };
-    expect(wrapper.state()).toEqual(expected);
+    expect(wrapper.state()).toMatchSnapshot();
   });
   it('should initialize state correctly (playing)', () => {
     const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" autoplay={true} />);
-    expect(wrapper.state('playing')).toBe(true);
+    expect(wrapper.state('video').playing).toBe(true);
   });
   it('should set state correctly using _handleDuration', () => {
     const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
     const duration = 1001;
     wrapper.instance()._handleDuration(duration);
-    expect(wrapper.state('duration')).toEqual(duration);
+    expect(wrapper.state('video').duration).toEqual(duration);
   });
   it('should set state correctly using _handlePlay', () => {
     const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
     wrapper.instance()._handlePlay();
-    expect(wrapper.state('playing')).toBe(true);
-    expect(wrapper.state('ended')).toBe(false);
+    expect(wrapper.state('video').playing).toBe(true);
+    expect(wrapper.state('video').ended).toBe(false);
   });
   it('should set state correctly using _handlePause', () => {
     const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
     wrapper.instance()._handlePlay();
     wrapper.instance()._handlePause();
-    expect(wrapper.state('playing')).toBe(false);
+    expect(wrapper.state('video').playing).toBe(false);
   });
   it('should set state correctly using _handleEnded', () => {
     const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
     wrapper.instance()._handleEnded();
-    expect(wrapper.state('ended')).toBe(true);
+    expect(wrapper.state('video').ended).toBe(true);
   });
   it('should add/remove event listeners and set/clear timers on mount and unmount', async () => {
     const timeLine = {
@@ -454,10 +446,10 @@ describe('ShoppableVideoBrick Component', () => {
       };
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" timeLine={timeLine} />);
       wrapper.instance()._handleProgress(0);
-      expect(wrapper.state('index')).toBe(-1);
-      expect(wrapper.state('range')).toBe(0);
-      expect(wrapper.state('prevItems')).toBe(0);
-      expect(wrapper.state('startCrossFade')).toBe(false);
+      expect(wrapper.state('thumbnailBar').currentIndex).toBe(-1);
+      expect(wrapper.state('thumbnailBar').range).toBe(0);
+      expect(wrapper.state('thumbnailBar').prevItems).toBe(0);
+      expect(wrapper.state('productBoard').display).toBe(false);
     });
     it('should set state correctly when first sequence matches current progress', () => {
       const timeLine = {
@@ -621,10 +613,10 @@ describe('ShoppableVideoBrick Component', () => {
       };
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" timeLine={timeLine} />);
       wrapper.instance()._handleProgress(1);
-      expect(wrapper.state('index')).toBe(0);
-      expect(wrapper.state('range')).toBe(3);
-      expect(wrapper.state('prevItems')).toBe(0);
-      expect(wrapper.state('startCrossFade')).toBe(false);
+      expect(wrapper.state('thumbnailBar').currentIndex).toBe(0);
+      expect(wrapper.state('thumbnailBar').range).toBe(3);
+      expect(wrapper.state('thumbnailBar').prevItems).toBe(0);
+      expect(wrapper.state('productBoard').display).toBe(false);
     });
     it('should set state correctly when second sequence matches current progress', () => {
       const timeLine = {
@@ -788,10 +780,10 @@ describe('ShoppableVideoBrick Component', () => {
       };
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" timeLine={timeLine} />);
       wrapper.instance()._handleProgress(3);
-      expect(wrapper.state('index')).toBe(1);
-      expect(wrapper.state('range')).toBe(1);
-      expect(wrapper.state('prevItems')).toBe(3);
-      expect(wrapper.state('startCrossFade')).toBe(false);
+      expect(wrapper.state('thumbnailBar').currentIndex).toBe(1);
+      expect(wrapper.state('thumbnailBar').range).toBe(1);
+      expect(wrapper.state('thumbnailBar').prevItems).toBe(3);
+      expect(wrapper.state('productBoard').display).toBe(false);
     });
     it('should set state correctly when third sequence matches current progress', () => {
       const timeLine = {
@@ -955,10 +947,10 @@ describe('ShoppableVideoBrick Component', () => {
       };
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" timeLine={timeLine} />);
       wrapper.instance()._handleProgress(6);
-      expect(wrapper.state('index')).toBe(2);
-      expect(wrapper.state('range')).toBe(2);
-      expect(wrapper.state('prevItems')).toBe(4);
-      expect(wrapper.state('startCrossFade')).toBe(false);
+      expect(wrapper.state('thumbnailBar').currentIndex).toBe(2);
+      expect(wrapper.state('thumbnailBar').range).toBe(2);
+      expect(wrapper.state('thumbnailBar').prevItems).toBe(4);
+      expect(wrapper.state('productBoard').display).toBe(false);
     });
     it('should set startCrossFade state correctly', () => {
       const timeLine = {
@@ -1014,10 +1006,10 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" timeLine={timeLine} />);
       wrapper.instance()._handleDuration(20);
       wrapper.instance()._handleProgress(19);
-      expect(wrapper.state('index')).toBe(1);
-      expect(wrapper.state('range')).toBe(1);
-      expect(wrapper.state('prevItems')).toBe(2);
-      expect(wrapper.state('startCrossFade')).toBe(true);
+      expect(wrapper.state('thumbnailBar').currentIndex).toBe(1);
+      expect(wrapper.state('thumbnailBar').range).toBe(1);
+      expect(wrapper.state('thumbnailBar').prevItems).toBe(2);
+      expect(wrapper.state('productBoard').display).toBe(true);
     });
   });
   it('should handle _handleResize correctly', () => {
@@ -1042,34 +1034,34 @@ describe('ShoppableVideoBrick Component', () => {
     const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
     const inst = wrapper.instance();
     inst._updateShoppableWrapperWidth();
-    expect(wrapper.state('shoppableWrapperWidth')).toBe(0);
+    expect(wrapper.state('wrapper').width).toBe(0);
     const offsetWidth = 1024;
     inst._wrapper = { offsetWidth };
     inst._updateShoppableWrapperWidth();
-    expect(wrapper.state('shoppableWrapperWidth')).toEqual(offsetWidth);
+    expect(wrapper.state('wrapper').width).toEqual(offsetWidth);
   });
   it('should update state.thumbWidth correctly using _updateThumbWidth', () => {
     const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
     const inst = wrapper.instance();
     inst._itemCount = 8;
     inst._updateThumbWidth();
-    expect(wrapper.state('thumbWidth')).toBe(0);
+    expect(wrapper.state('thumbnailBar').thumbWidth).toBe(0);
     inst._thumbnailsBox = { scrollWidth: 800 };
     inst._itemCount = 0;
     inst._updateThumbWidth();
-    expect(wrapper.state('thumbWidth')).toBe(0);
+    expect(wrapper.state('thumbnailBar').thumbWidth).toBe(0);
     inst._thumbnailsBox = { scrollWidth: 800 };
-    inst._itemCount = 8;
+    wrapper.setState({ data: { sequences: [], numberOfItems: 8 } });
     inst._updateThumbWidth();
-    expect(wrapper.state('thumbWidth')).toBe(100);
+    expect(wrapper.state('thumbnailBar').thumbWidth).toBe(100);
   });
   describe('_getThumbsTranslate', () => {
     it('should return 0', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        shoppableWrapperWidth: 800,
-        thumbWidth: 100,
+        wrapper: { width: 800 },
+        thumbnailBar: { thumbWidth: 100 },
       });
       const value = inst._getThumbsTranslate(6);
       expect(value).toBe(0);
@@ -1078,8 +1070,8 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        shoppableWrapperWidth: 800,
-        thumbWidth: 100,
+        wrapper: { width: 800 },
+        thumbnailBar: { thumbWidth: 100 },
       });
       inst._thumbnailsBox = {
         scrollWidth: 800,
@@ -1091,11 +1083,11 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        shoppableWrapperWidth: 0,
+        wrapper: { width: 0 },
+        thumbnailBar: { thumbWidth: 100 },
       });
       inst._thumbnailsBox = {
         scrollWidth: 800,
-        thumbWidth: 100,
       };
       const value = inst._getThumbsTranslate(6);
       expect(value).toBe(0);
@@ -1104,11 +1096,11 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        shoppableWrapperWidth: 800,
+        wrapper: { width: 800 },
+        thumbnailBar: { thumbWidth: 100 },
       });
       inst._thumbnailsBox = {
         scrollWidth: 1000,
-        thumbWidth: 100,
       };
       const value = inst._getThumbsTranslate(1);
       expect(value).toBe(0);
@@ -1117,8 +1109,8 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        shoppableWrapperWidth: 800,
-        thumbWidth: 100,
+        wrapper: { width: 800 },
+        thumbnailBar: { thumbWidth: 100 },
       });
       inst._thumbnailsBox = {
         scrollWidth: 1000,
@@ -1130,8 +1122,8 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        shoppableWrapperWidth: 800,
-        thumbWidth: 100,
+        wrapper: { width: 800 },
+        thumbnailBar: { thumbWidth: 100 },
       });
       inst._thumbnailsBox = {
         scrollWidth: 1000,
@@ -1145,19 +1137,23 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        prevItems: 0,
-        thumbsTranslateX: -100,
+        thumbnailBar: {
+          prevItems: 0,
+          translateX: -100,
+        },
       });
       inst._updateThumbnailTranslate();
-      expect(wrapper.state('thumbsTranslateX')).toBe(0);
+      expect(wrapper.state('thumbnailBar').translateX).toBe(0);
     });
     it('should call _getThumbsTranslate with 2', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       inst._getThumbsTranslate = jest.fn().mockReturnValue(100);
       wrapper.setState({
-        prevItems: 1,
-        range: 2,
+        thumbnailBar: {
+          prevItems: 1,
+          range: 2,
+        },
       });
       inst._updateThumbnailTranslate();
       expect(inst._getThumbsTranslate).toHaveBeenCalledWith(2);
@@ -1206,27 +1202,27 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        productboardOverflow: true,
+        productBoard: { overflow: true },
       });
       inst._productboardContainer = {
         offsetHeight: 800,
         scrollHeight: 800,
       };
       inst._updateProductBoardOverflow();
-      expect(wrapper.state('productboardOverflow')).toBe(false);
+      expect(wrapper.state('productBoard').overflow).toBe(false);
     });
-    it('should set state.productboardOverflow to true', () => {
+    it('should set state.productBoard.overflow to true', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
       wrapper.setState({
-        productboardOverflow: false,
+        productBoard: { overflow: false },
       });
       inst._productboardContainer = {
         offsetHeight: 800,
         scrollHeight: 1000,
       };
       inst._updateProductBoardOverflow();
-      expect(wrapper.state('productboardOverflow')).toBe(true);
+      expect(wrapper.state('productBoard').overflow).toBe(true);
     });
   });
   describe('_createThumbnailProps()', () => {
@@ -1251,44 +1247,46 @@ describe('ShoppableVideoBrick Component', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
 
-      wrapper.setState({
-        ended: false,
-        selectedItem: {
-          id: 'ID_1',
+      const value = inst._createThumbnailProps(
+        1,
+        {
+          _id: 'ID',
+          teaserTitle: 'Teaser Title',
+          teaserText: 'Teaser Text',
+          picture: {
+            link: 'coremedia:///media/6288',
+            title: 'Picture Title',
+            alt: 'Picture Alt',
+          },
+          price: 100,
         },
-      });
-      const value = inst._createThumbnailProps(1, {
-        _id: 'ID',
-        teaserTitle: 'Teaser Title',
-        teaserText: 'Teaser Text',
-        picture: {
-          link: 'coremedia:///media/6288',
-          title: 'Picture Title',
-          alt: 'Picture Alt',
-        },
-        price: 100,
-      });
+        false,
+        'ID_1',
+        -1
+      );
       expect(value.active).toBe(true);
     });
     it('should return props with active=false', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
 
-      wrapper.setState({
-        ended: false,
-        index: 1,
-      });
-      const value = inst._createThumbnailProps(1, {
-        _id: 'ID',
-        teaserTitle: 'Teaser Title',
-        teaserText: 'Teaser Text',
-        picture: {
-          link: 'coremedia:///media/6288',
-          title: 'Picture Title',
-          alt: 'Picture Alt',
+      const value = inst._createThumbnailProps(
+        1,
+        {
+          _id: 'ID',
+          teaserTitle: 'Teaser Title',
+          teaserText: 'Teaser Text',
+          picture: {
+            link: 'coremedia:///media/6288',
+            title: 'Picture Title',
+            alt: 'Picture Alt',
+          },
+          price: 100,
         },
-        price: 100,
-      });
+        false,
+        undefined,
+        1
+      );
       expect(value.active).toBe(true);
     });
     it('should return props with active=false', () => {
@@ -1380,21 +1378,27 @@ describe('ShoppableVideoBrick Component', () => {
         const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
         const inst = wrapper.instance();
 
-        const { handleClick, ...props } = inst._createThumbnailProps(1, {
-          _id: 'ID',
-          teaserTitle: 'Teaser Title',
-          teaserText: 'Teaser Text',
-          picture: {
-            link: 'coremedia:///media/6288',
-            title: 'Picture Title',
-            alt: 'Picture Alt',
+        const { handleClick, ...props } = inst._createThumbnailProps(
+          1,
+          {
+            _id: 'ID',
+            teaserTitle: 'Teaser Title',
+            teaserText: 'Teaser Text',
+            picture: {
+              link: 'coremedia:///media/6288',
+              title: 'Picture Title',
+              alt: 'Picture Alt',
+            },
+            price: 100,
           },
-          price: 100,
-        });
+          false,
+          undefined,
+          -1
+        );
         handleClick();
-        expect(wrapper.state('selectedItem')).toEqual(props);
-        expect(wrapper.state('playing')).toBe(false);
-        expect(wrapper.state('pausedByModal')).toBe(false);
+        expect(wrapper.state('thumbnailBar').selectedItem).toEqual(props);
+        expect(wrapper.state('video').playing).toBe(false);
+        expect(wrapper.state('video').pausedByModal).toBe(false);
       });
     });
   });
@@ -1404,32 +1408,40 @@ describe('ShoppableVideoBrick Component', () => {
       const inst = wrapper.instance();
 
       wrapper.setState({
-        selectedItem: {
-          id: 123,
+        thumbnailBar: {
+          selectedItem: {
+            id: 123,
+          },
         },
-        playing: false,
-        pausedByModal: false,
+        video: {
+          playing: false,
+          pausedByModal: false,
+        },
       });
       inst._handleCloseQuickInfo();
-      expect(wrapper.state('selectedItem')).toBe(null);
-      expect(wrapper.state('playing')).toBe(false);
-      expect(wrapper.state('pausedByModal')).toBe(false);
+      expect(wrapper.state('thumbnailBar').selectedItem).toBe(null);
+      expect(wrapper.state('video').playing).toBe(false);
+      expect(wrapper.state('video').pausedByModal).toBe(false);
     });
     it('should change state', () => {
       const wrapper = shallow(<Teaser link="coremedia:///media/6200/data" />);
       const inst = wrapper.instance();
 
       wrapper.setState({
-        selectedItem: {
-          id: 123,
+        thumbnailBar: {
+          selectedItem: {
+            id: 123,
+          },
         },
-        playing: false,
-        pausedByModal: true,
+        video: {
+          playing: false,
+          pausedByModal: true,
+        },
       });
       inst._handleCloseQuickInfo();
-      expect(wrapper.state('selectedItem')).toBe(null);
-      expect(wrapper.state('playing')).toBe(true);
-      expect(wrapper.state('pausedByModal')).toBe(false);
+      expect(wrapper.state('thumbnailBar').selectedItem).toBe(null);
+      expect(wrapper.state('video').playing).toBe(true);
+      expect(wrapper.state('video').pausedByModal).toBe(false);
     });
   });
   describe('_handleWrapperRef()', () => {
@@ -1460,6 +1472,149 @@ describe('ShoppableVideoBrick Component', () => {
       const _productboardContainer = 'ProductboardContainer';
       inst._handleProductboardContainerRef(_productboardContainer);
       expect(inst._productboardContainer).toEqual(_productboardContainer);
+    });
+  });
+  describe('getDerivedStateFromProps()', () => {
+    it('should return new state with calculated numberOfItems and sequences', () => {
+      const timeLine = {
+        sequences: [
+          {
+            startTimeMillis: 3000,
+            target: {
+              items: [
+                {
+                  _id: 'coremedia:///cap/content/6268',
+                  teaserTitle: 'HKMX DK Comfort Sports Leggings',
+                  teaserText:
+                    'Be ready for the gym with these comfortable sports leggings from our DK collection. They are made from very breathable fabric that feels nice and light during sports and exercise. Combine with matching items from the HKMX DK collection.',
+                  picture: {
+                    title: 'Comfort Sports Leggings',
+                    alt: 'Comfort Sports Leggings',
+                    link: 'coremedia:///image/6266/data',
+                  },
+                  price: 37.99,
+                },
+                {
+                  _id: 'coremedia:///cap/content/6232',
+                  teaserTitle: 'HKMX DK The All Star Level 2 Bra',
+                  teaserText:
+                    'This DK sports bra features a pretty floral print for a feminine touch. This level 2 sports bra provides medium support for fairly intensive exercise such as jogging and running.',
+                  picture: {
+                    title: 'The All Star Level 2 Bra',
+                    alt: 'The All Star Level 2 Bra',
+                    link: 'coremedia:///image/6208/data',
+                  },
+                  price: 37.99,
+                },
+              ],
+            },
+          },
+          {
+            startTimeMillis: 18000,
+            target: {
+              _id: 'coremedia:///cap/content/6196',
+              teaserTitle: 'HKMX DK Sweater',
+              teaserText:
+                'This warm sweater from our Doutzen collection is ideal for wearing after your workout. It will keep nice and warm even on cold days. Combine with matching items from the DK collection.',
+              picture: {
+                title: 'Sweater',
+                alt: 'Sweater',
+                link: 'coremedia:///image/6226/data',
+              },
+              price: 42.99,
+            },
+          },
+        ],
+      };
+      const state = {
+        data: {
+          prevTimeLine: null,
+        },
+      };
+      const props = {
+        timeLine,
+      };
+      const derivedState = Teaser.getDerivedStateFromProps(props, state);
+      expect(derivedState).not.toBe(null);
+      expect(derivedState).toMatchSnapshot();
+    });
+    it('should return new state with numberOfItems = 0 and sequences = []', () => {
+      const timeLine = {
+        sequences: null,
+      };
+      const state = {
+        data: {
+          prevTimeLine: null,
+        },
+      };
+      const props = {
+        timeLine,
+      };
+      const derivedState = Teaser.getDerivedStateFromProps(props, state);
+      expect(derivedState).not.toBe(null);
+      expect(derivedState).toMatchSnapshot();
+    });
+    it('should return null', () => {
+      const timeLine = {
+        sequences: [
+          {
+            startTimeMillis: 3000,
+            target: {
+              items: [
+                {
+                  _id: 'coremedia:///cap/content/6268',
+                  teaserTitle: 'HKMX DK Comfort Sports Leggings',
+                  teaserText:
+                    'Be ready for the gym with these comfortable sports leggings from our DK collection. They are made from very breathable fabric that feels nice and light during sports and exercise. Combine with matching items from the HKMX DK collection.',
+                  picture: {
+                    title: 'Comfort Sports Leggings',
+                    alt: 'Comfort Sports Leggings',
+                    link: 'coremedia:///image/6266/data',
+                  },
+                  price: 37.99,
+                },
+                {
+                  _id: 'coremedia:///cap/content/6232',
+                  teaserTitle: 'HKMX DK The All Star Level 2 Bra',
+                  teaserText:
+                    'This DK sports bra features a pretty floral print for a feminine touch. This level 2 sports bra provides medium support for fairly intensive exercise such as jogging and running.',
+                  picture: {
+                    title: 'The All Star Level 2 Bra',
+                    alt: 'The All Star Level 2 Bra',
+                    link: 'coremedia:///image/6208/data',
+                  },
+                  price: 37.99,
+                },
+              ],
+            },
+          },
+          {
+            startTimeMillis: 18000,
+            target: {
+              _id: 'coremedia:///cap/content/6196',
+              teaserTitle: 'HKMX DK Sweater',
+              teaserText:
+                'This warm sweater from our Doutzen collection is ideal for wearing after your workout. It will keep nice and warm even on cold days. Combine with matching items from the DK collection.',
+              picture: {
+                title: 'Sweater',
+                alt: 'Sweater',
+                link: 'coremedia:///image/6226/data',
+              },
+              price: 42.99,
+            },
+          },
+        ],
+      };
+      const state = {
+        data: {
+          prevTimeLine: timeLine,
+        },
+      };
+      const props = {
+        timeLine,
+      };
+      const derivedState = Teaser.getDerivedStateFromProps(props, state);
+      expect(derivedState).toBe(null);
     });
   });
 });
