@@ -1,12 +1,26 @@
 // @flow
 import React from 'react';
-import mockAxios from 'axios';
 
 import Fetch from '../Fetch';
 
-jest.mock('axios');
-
 describe('Fetch Component', () => {
+  const mockFetch = (imageVariantsData, contentQueryData) =>
+    jest
+      .fn()
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          ok: true,
+          json: () => imageVariantsData,
+        })
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          ok: true,
+          json: () => contentQueryData,
+        })
+      )
+      .mockName('fetch');
+
   beforeEach(() => {
     jest.resetModules();
     jest.resetAllMocks();
@@ -20,7 +34,51 @@ describe('Fetch Component', () => {
   });
 
   it('should return data', async () => {
-    const data = {
+    const imageVariantsData = {
+      ratios: {
+        landscape_ratio16x9: {
+          minWidth: 320,
+          minHeight: 180,
+          widthRatio: 16,
+          heightRatio: 9,
+          dimensions: [
+            {
+              width: 320,
+              height: 180,
+            },
+            {
+              width: 480,
+              height: 270,
+            },
+            {
+              width: 768,
+              height: 432,
+            },
+            {
+              width: 992,
+              height: 558,
+            },
+            {
+              width: 1200,
+              height: 675,
+            },
+          ],
+        },
+        thumbnail: {
+          minWidth: 77,
+          minHeight: 93,
+          widthRatio: 77,
+          heightRatio: 93,
+          dimensions: [
+            {
+              width: 77,
+              height: 93,
+            },
+          ],
+        },
+      },
+    };
+    const contentQueryData = {
       teaserTitle: 'Content Management at a new Scale with CoreMedia CaaS',
       teaserText: 'Discover the new CoreMedia Headless Services.',
       teaserTarget: {
@@ -34,7 +92,8 @@ describe('Fetch Component', () => {
         link: 'coremedia:///image/2656/data',
       },
     };
-    mockAxios.get.mockImplementation(() => Promise.resolve({ data }));
+    global.fetch = mockFetch(imageVariantsData, contentQueryData);
+
     const wrapper = shallow(
       <Fetch
         host="http://localhost"
@@ -50,28 +109,19 @@ describe('Fetch Component', () => {
     );
     expect(wrapper.state('pending')).toBe(false);
     await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+    // Workaround for https://github.com/airbnb/enzyme/issues/1587 and
+    //                https://github.com/facebook/jest/issues/2157
+    await new Promise(res => process.nextTick(res));
     expect(wrapper.state('pending')).toBe(false);
-    expect(wrapper.state('data')).toEqual(data);
-    expect(wrapper.state('error')).toEqual(null);
+    expect(wrapper.state('data')).toEqual(contentQueryData);
+    expect(wrapper.state('imageRatios')).toEqual(imageVariantsData.ratios);
+    expect(wrapper.state('error')).toBe(null);
   });
 
   it('should not perform an API call and have state.getMediaUrl to be undefined', async () => {
-    const data = {
-      teaserTitle: 'Content Management at a new Scale with CoreMedia CaaS',
-      teaserText: 'Discover the new CoreMedia Headless Services.',
-      teaserTarget: {
-        title: '',
-        segment: '',
-        link: 'https://www.coremedia.com/',
-      },
-      picture: {
-        title: 'Globe',
-        alt: 'Globe',
-        link: 'coremedia:///image/2656/data',
-      },
-    };
-    mockAxios.get.mockImplementation(() => Promise.resolve({ data }));
+    global.fetch = mockFetch({}, {});
+
     const wrapper = shallow(
       <Fetch fragmentType="teaser" contentId="id123" viewType="hero">
         {() => {}}
@@ -80,7 +130,7 @@ describe('Fetch Component', () => {
     );
     expect(wrapper.state('pending')).toBe(false);
     await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(mockAxios.get).toHaveBeenCalledTimes(0);
+    expect(global.fetch).toHaveBeenCalledTimes(0);
     expect(wrapper.state('pending')).toBe(false);
     expect(wrapper.state('data')).toBe(null);
     expect(wrapper.state('error')).toBe(null);
@@ -88,7 +138,11 @@ describe('Fetch Component', () => {
   });
 
   it('should return error when API call rejects', async () => {
-    mockAxios.get.mockImplementation(() => Promise.reject());
+    global.fetch = jest
+      .fn()
+      .mockImplementation(() => Promise.reject())
+      .mockName('fetch');
+
     const wrapper = shallow(
       <Fetch
         host="http://localhost"
@@ -106,14 +160,15 @@ describe('Fetch Component', () => {
     // Workaround for https://github.com/airbnb/enzyme/issues/1587 and
     //                https://github.com/facebook/jest/issues/2157
     await new Promise(res => process.nextTick(res));
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledTimes(2);
     expect(wrapper.state('pending')).toBe(false);
     expect(wrapper.state('data')).toEqual(null);
-    expect(wrapper.state('error')).toEqual('Fragment data couldn´t be retrieved.');
+    expect(wrapper.state('error')).toEqual('Data could not be retrieved.');
   });
 
   it('should return error when API call returns no data', async () => {
-    mockAxios.get.mockImplementation(() => Promise.resolve({ data: {} }));
+    global.fetch = mockFetch({}, {});
+
     const wrapper = shallow(
       <Fetch
         host="http://localhost"
@@ -128,10 +183,13 @@ describe('Fetch Component', () => {
     );
     expect(wrapper.state('pending')).toBe(false);
     await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+    // Workaround for https://github.com/airbnb/enzyme/issues/1587 and
+    //                https://github.com/facebook/jest/issues/2157
+    await new Promise(res => process.nextTick(res));
     expect(wrapper.state('pending')).toBe(false);
     expect(wrapper.state('data')).toEqual(null);
-    expect(wrapper.state('error')).toEqual('No data returned for fragment.');
+    expect(wrapper.state('error')).toEqual('Image variants could not be retrieved.');
   });
 
   it('should return error when fragmentType is unknown', async () => {
@@ -149,7 +207,7 @@ describe('Fetch Component', () => {
     );
     expect(wrapper.state('pending')).toBe(false);
     await expect(wrapper.instance().componentDidMount()).resolves;
-    expect(mockAxios.get).toHaveBeenCalledTimes(0);
+    expect(global.fetch).toHaveBeenCalledTimes(0);
     expect(wrapper.state('pending')).toBe(false);
     expect(wrapper.state('data')).toEqual(null);
     expect(wrapper.state('error')).toEqual('No config found for fragmentType="unknown".');

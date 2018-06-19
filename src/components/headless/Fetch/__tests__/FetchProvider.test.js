@@ -9,7 +9,6 @@ describe('FetchProvider Component', () => {
       host: 'http://context.com',
       tenantId: 'coremedia',
       siteId: 'ID123',
-      timeout: 3000,
     };
     const wrapper = shallow(<FetchProvider {...context}>Content</FetchProvider>);
     const {

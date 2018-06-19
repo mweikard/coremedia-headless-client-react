@@ -18,7 +18,6 @@ describe('FetchConsumer Component', () => {
     host: 'http://context.com',
     tenantId: 'coremedia',
     siteId: 'ID123',
-    timeout: 3000,
     contentUrlPrefix: 'coremedia:///',
   };
 
@@ -48,7 +47,6 @@ describe('FetchConsumer Component', () => {
       host: 'http://localhost.com',
       tenantId: 'sherlock',
       siteId: 'ID321',
-      timeout: 10000,
       contentUrlPrefix: 'prefix:///',
       fragmentType: 'teaser',
       contentId: 'id123',
