@@ -31,21 +31,11 @@ exports[`ProductCard Component should render correctly 1`] = `
       ariaLabel="Open quick view for \\"Title 1\\""
       onClick={[MockFunction handleClick]}
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Picture Alt 1"
         link="coremedia:///image/6188/data"
         ratio="portrait_ratio5x6"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Picture Title 1"
       />
     </LinkButton>

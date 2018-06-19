@@ -19,21 +19,11 @@ exports[`Video Brick default context should render Teaser Component and show pos
 
 exports[`Video Brick default context should render Teaser Component and show poster overlay 2`] = `
 <PosterBox>
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Alt"
     link="http://127.0.0.1:8080/media/6188/data"
     ratio="landscape_ratio16x9"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Title"
   />
 </PosterBox>
@@ -150,21 +140,11 @@ exports[`Video Brick headless context should render Teaser Component and show po
 
 exports[`Video Brick headless context should render Teaser Component and show poster overlay 2`] = `
 <PosterBox>
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Alt"
     link="coremedia:///image/6188/data"
     ratio="landscape_ratio16x9"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Title"
   />
 </PosterBox>

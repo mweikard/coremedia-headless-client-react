@@ -47,20 +47,10 @@ exports[`QuickInfo Component should render correctly 1`] = `
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Picture Alt"
         link="Link"
         ratio="quickview_ratio5x6"
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Picture Title"
       />
       <ProductInfo

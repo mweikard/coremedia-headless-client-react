@@ -6,6 +6,18 @@ export type Config = {
   createProps: (ownerProps: { data: Object, params: FragmentParams | void }) => Object,
 };
 
+export type Dimensions = Array<{| width: number, height: number |}>;
+
+export type ImageRatios = {
+  [label: string]: {|
+    minWidth: number,
+    minHeight: number,
+    widthRatio: number,
+    heightRatio: number,
+    dimensions: Dimensions,
+  |},
+};
+
 export type Teaser = {
   url?: string,
   pictureLink?: string,

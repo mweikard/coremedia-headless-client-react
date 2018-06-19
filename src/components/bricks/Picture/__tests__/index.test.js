@@ -4,6 +4,50 @@ import React from 'react';
 import createGetMediaUrl from '../../../headless/utils/createGetMediaUrl';
 
 describe('Picture Component', () => {
+  const imageVariantsData = {
+    ratios: {
+      portrait_ratio1x1: {
+        minWidth: 320,
+        minHeight: 320,
+        widthRatio: 1,
+        heightRatio: 1,
+        dimensions: [
+          {
+            width: 320,
+            height: 320,
+          },
+          {
+            width: 480,
+            height: 480,
+          },
+          {
+            width: 768,
+            height: 768,
+          },
+          {
+            width: 992,
+            height: 992,
+          },
+          {
+            width: 1200,
+            height: 1200,
+          },
+        ],
+      },
+      thumbnail: {
+        minWidth: 77,
+        minHeight: 93,
+        widthRatio: 77,
+        heightRatio: 93,
+        dimensions: [
+          {
+            width: 77,
+            height: 93,
+          },
+        ],
+      },
+    },
+  };
   const context = {
     default: {
       getMediaUrl: link => link,
@@ -13,6 +57,7 @@ describe('Picture Component', () => {
         'http://127.0.0.1:8080/caas/v1/coremedia/sites/caassiopeia-en-DE',
         'coremedia:///'
       ),
+      imageRatios: imageVariantsData.ratios,
     },
   };
 
@@ -26,6 +71,11 @@ describe('Picture Component', () => {
     return require('..').default;
   };
 
+  beforeEach(() => {
+    jest.resetModules();
+    jest.resetAllMocks();
+  });
+
   describe('default context', () => {
     it('should render correctly', () => {
       const Picture = getPictureWithContext();
@@ -35,22 +85,9 @@ describe('Picture Component', () => {
           link="http://127.0.0.1:8080/media/2662/data"
           ratio="portrait_ratio1x1"
           title="Scrum"
-          theme={{
-            breakpoints: {
-              small: 480,
-              tablet: 768,
-              desktop: 992,
-              large: 1280,
-            },
-          }}
         />
       );
-      expect(
-        wrapper
-          .shallow()
-          .find('Consumer')
-          .shallow()
-      ).toMatchSnapshot();
+      expect(wrapper.shallow()).toMatchSnapshot();
     });
   });
   describe('headless context', () => {
@@ -62,22 +99,9 @@ describe('Picture Component', () => {
           link="coremedia:///image/2662/data"
           ratio="portrait_ratio1x1"
           title="Scrum"
-          theme={{
-            breakpoints: {
-              small: 480,
-              tablet: 768,
-              desktop: 992,
-              large: 1280,
-            },
-          }}
         />
       );
-      expect(
-        wrapper
-          .shallow()
-          .find('Consumer')
-          .shallow()
-      ).toMatchSnapshot();
+      expect(wrapper.shallow()).toMatchSnapshot();
     });
     it('should render correctly without <sources> element', () => {
       const Picture = getPictureWithContext('headless');
@@ -87,40 +111,16 @@ describe('Picture Component', () => {
           link="coremedia:///image/2662/data"
           ratio="portrait_ratio1x1"
           title="Scrum"
-          theme={{}}
         />
       );
-      expect(
-        wrapper
-          .shallow()
-          .find('Consumer')
-          .shallow()
-      ).toMatchSnapshot();
+      expect(wrapper.shallow()).toMatchSnapshot();
     });
     it('should render correctly with ratio thumbnail', () => {
       const Picture = getPictureWithContext('headless');
       const wrapper = shallow(
-        <Picture
-          color="red"
-          link="coremedia:///image/2662/data"
-          ratio="thumbnail"
-          title="Scrum"
-          theme={{
-            breakpoints: {
-              small: 480,
-              tablet: 768,
-              desktop: 992,
-              large: 1280,
-            },
-          }}
-        />
+        <Picture color="red" link="coremedia:///image/2662/data" ratio="thumbnail" title="Scrum" />
       );
-      expect(
-        wrapper
-          .shallow()
-          .find('Consumer')
-          .shallow()
-      ).toMatchSnapshot();
+      expect(wrapper.shallow()).toMatchSnapshot();
     });
     it('should render correctly and skip breakpoint large', () => {
       const Picture = getPictureWithContext('headless');
@@ -130,22 +130,9 @@ describe('Picture Component', () => {
           link="coremedia:///image/2662/data"
           ratio="portrait_ratio1x1"
           title="Scrum"
-          theme={{
-            breakpoints: {
-              small: 480,
-              tablet: 768,
-              desktop: 992,
-              large: '1280',
-            },
-          }}
         />
       );
-      expect(
-        wrapper
-          .shallow()
-          .find('Consumer')
-          .shallow()
-      ).toMatchSnapshot();
+      expect(wrapper.shallow()).toMatchSnapshot();
     });
   });
 });

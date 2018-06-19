@@ -71,23 +71,13 @@ Array [
 
 exports[`Detail Component should render Detail with Picture 1`] = `
 Array [
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Lego"
     color="blue"
     key="picture"
     link="coremedia:///image/2658/data"
     ratio="landscape_ratio4x1"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Lego"
   />,
 ]
@@ -95,23 +85,13 @@ Array [
 
 exports[`Detail Component should render Detail with Picture and Abstract 1`] = `
 Array [
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Lego"
     color="blue"
     key="picture"
     link="coremedia:///image/2658/data"
     ratio="landscape_ratio4x1"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Lego"
   />,
   <Abstract
@@ -146,23 +126,13 @@ Array [
 
 exports[`Detail Component should render Detail with Picture and Richtext 1`] = `
 Array [
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Lego"
     color="blue"
     key="picture"
     link="coremedia:///image/2658/data"
     ratio="landscape_ratio4x1"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Lego"
   />,
   <RichtextBrick
@@ -175,23 +145,13 @@ Array [
 
 exports[`Detail Component should render Detail with Picture, Abstract and Richtext 1`] = `
 Array [
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Lego"
     color="blue"
     key="picture"
     link="coremedia:///image/2658/data"
     ratio="landscape_ratio4x1"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Lego"
   />,
   <Abstract
@@ -317,23 +277,13 @@ Array [
       }
     }
   />,
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Lego"
     color="blue"
     key="picture"
     link="coremedia:///image/2658/data"
     ratio="landscape_ratio4x1"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Lego"
   />,
 ]
@@ -427,23 +377,13 @@ Array [
       }
     }
   />,
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Lego"
     color="blue"
     key="picture"
     link="coremedia:///image/2658/data"
     ratio="landscape_ratio4x1"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Lego"
   />,
   <Abstract
@@ -491,23 +431,13 @@ Array [
       }
     }
   />,
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Lego"
     color="blue"
     key="picture"
     link="coremedia:///image/2658/data"
     ratio="landscape_ratio4x1"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Lego"
   />,
   <RichtextBrick
@@ -533,23 +463,13 @@ Array [
       }
     }
   />,
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Lego"
     color="blue"
     key="picture"
     link="coremedia:///image/2658/data"
     ratio="landscape_ratio4x1"
     stretch={true}
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Lego"
   />,
   <Abstract

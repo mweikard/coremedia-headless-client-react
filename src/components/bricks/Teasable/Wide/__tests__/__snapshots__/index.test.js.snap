@@ -107,23 +107,13 @@ exports[`WideTeaser Component should render WideTeaser with Link and Picture 1`]
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -146,23 +136,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -249,23 +229,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -349,23 +319,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -432,23 +392,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -518,23 +468,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -607,23 +547,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -693,23 +623,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -763,22 +683,12 @@ exports[`WideTeaser Component should render WideTeaser with Picture (without par
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -799,23 +709,13 @@ exports[`WideTeaser Component should render WideTeaser with Picture 1`] = `
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>
@@ -836,23 +736,13 @@ exports[`WideTeaser Component should render WideTeaser with Picture and CTA 1`] 
         }
       }
     >
-      <WithTheme(PictureBrick)
+      <PictureBrick
         alt="Globe"
         color="blue"
         key="picture"
         link="coremedia:///image/2656/data"
         ratio="landscape_ratio3x2"
         stretch={true}
-        theme={
-          Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
-            },
-          }
-        }
         title="Globe"
       />
     </PictureBox>

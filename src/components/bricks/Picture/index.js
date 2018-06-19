@@ -1,35 +1,28 @@
 // @flow
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { withTheme } from 'styled-components';
 
 import Img from '../../basic/Img';
 import MediaContext from '../../headless/Context/MediaContext';
-import type { Theme } from '../../../types';
-
-const convertToArray = (breakpoints: mixed): Array<number> =>
-  Object.values(breakpoints).reduce(
-    (acc, breakpoint) => (typeof breakpoint === 'number' ? acc.concat(breakpoint) : acc),
-    []
-  );
+import type { Dimensions } from '../../../types';
 
 const getImageSources = (
   getMediaUrl,
   link: string,
   ratio: string,
-  breakpoints: mixed
+  dimensions: Dimensions
 ): React.Node => {
-  if (!(breakpoints instanceof Object)) {
+  if (!Array.isArray(dimensions)) {
     return;
   }
 
-  const sourceList = convertToArray(breakpoints)
-    .sort((a, b) => b - a) // large to small
-    .map((breakpoint, index) => (
+  const sourceList = dimensions
+    .sort((a, b) => b.width - a.width) // large to small
+    .map((dimension, index) => (
       <source
         key={index}
-        media={`(min-width: ${breakpoint}px)`}
-        srcSet={getMediaUrl(link, ratio, breakpoint)}
+        media={`(min-width: ${dimension.width}px)`}
+        srcSet={getMediaUrl(link, ratio, dimension.width)}
       />
     ));
   return sourceList;
@@ -41,47 +34,30 @@ type Props = {
   stretch?: boolean,
   title?: string,
   alt?: string,
-  theme: Theme,
 };
 
-const PictureBrick = ({ link, ratio, stretch, title, alt, theme }: Props) =>
-  ratio === 'thumbnail' ? (
-    <MediaContext.Consumer>
-      {({ getMediaUrl }) => (
-        <Img src={getMediaUrl(link, ratio, 77)} alt={alt} title={title} stretch={stretch} />
-      )}
-    </MediaContext.Consumer>
-  ) : (
-    <MediaContext.Consumer>
-      {({ getMediaUrl }) => (
+const PictureBrick = ({ link, ratio, stretch, title, alt }: Props) => (
+  <MediaContext.Consumer>
+    {({ getMediaUrl, imageRatios }) => {
+      const { minWidth, dimensions } = (imageRatios && imageRatios[ratio]) || {};
+      return ratio === 'thumbnail' ? (
+        <Img src={getMediaUrl(link, ratio, minWidth)} alt={alt} title={title} stretch={stretch} />
+      ) : (
         <picture>
-          {getImageSources(getMediaUrl, link, ratio, theme.breakpoints)}
-          <Img src={getMediaUrl(link, ratio, 320)} alt={alt} title={title} stretch={stretch} />
+          {getImageSources(getMediaUrl, link, ratio, dimensions)}
+          <Img src={getMediaUrl(link, ratio, minWidth)} alt={alt} title={title} stretch={stretch} />
         </picture>
-      )}
-    </MediaContext.Consumer>
-  );
+      );
+    }}
+  </MediaContext.Consumer>
+);
 
-const Wrapped = withTheme(PictureBrick);
-
-Wrapped.propTypes = {
+PictureBrick.propTypes = {
   link: PropTypes.string.isRequired,
   ratio: PropTypes.string.isRequired,
   stretch: PropTypes.bool,
   title: PropTypes.string,
   alt: PropTypes.string,
-  color: PropTypes.string,
 };
 
-Wrapped.defaultProps = {
-  theme: {
-    breakpoints: {
-      small: 480,
-      tablet: 768,
-      desktop: 992,
-      large: 1280,
-    },
-  },
-};
-
-export default Wrapped;
+export default PictureBrick;

@@ -84,21 +84,11 @@ exports[`Richtext Component should render HTML parsed to React Components 1`] = 
       }
     }
   >
-    <WithTheme(PictureBrick)
+    <PictureBrick
       alt="Scrum"
       link="coremedia:///image/2662/data"
       ratio="landscape_ratio16x9"
       stretch={true}
-      theme={
-        Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "small": 480,
-            "tablet": 768,
-          },
-        }
-      }
     />
   </PictureWrapper>
   <a
@@ -227,21 +217,11 @@ exports[`Richtext Component should render HTML parsed to React Components 2`] = 
       }
     }
   >
-    <WithTheme(PictureBrick)
+    <PictureBrick
       alt="Scrum"
       link="http://127.0.0.1:8080/media/2662/data"
       ratio="landscape_ratio16x9"
       stretch={true}
-      theme={
-        Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "small": 480,
-            "tablet": 768,
-          },
-        }
-      }
     />
   </PictureWrapper>
   <a

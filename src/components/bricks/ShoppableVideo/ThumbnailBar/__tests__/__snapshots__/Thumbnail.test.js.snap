@@ -6,20 +6,10 @@ exports[`Thumbnail Component should render correctly with default props 1`] = `
   ariaLabel="label name"
   onClick={[MockFunction handleClick]}
 >
-  <WithTheme(PictureBrick)
+  <PictureBrick
     alt="Alt"
     link="coremedia:///image/6188/data"
     ratio="thumbnail"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "small": 480,
-          "tablet": 768,
-        },
-      }
-    }
     title="Title"
   />
 </LinkButton>
