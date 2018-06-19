@@ -48,6 +48,8 @@ export default class FetchImpl extends React.Component<Props, State> {
   };
 
   state = {
+    getMediaUrl: undefined,
+    imageRatios: undefined,
     pending: false,
     data: null,
     error: null,
