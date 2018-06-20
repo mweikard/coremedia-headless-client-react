@@ -112,7 +112,7 @@ export default class FetchImpl extends React.Component<Props, State> {
 
       const getImageVariants = () =>
         fetch(`${baseURL}/media/image/variants`, {
-          headers: { authorization: 'intern', 'Cache-Control': 'must-revalidate, max-age=60' },
+          headers: { authorization: 'intern', 'Cache-Control': 'public, max-age=300' },
           cache: 'default',
         }).then(response => response.json());
 
