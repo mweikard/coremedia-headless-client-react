@@ -320,6 +320,7 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
     if (props.timeLine !== state.data.prevTimeLine) {
       if (props.timeLine && Array.isArray(props.timeLine.sequences)) {
         const sequences = props.timeLine.sequences
+          .filter(sequence => !sequence.target.items || sequence.target.items.length > 0)
           .sort((a, b) => a.startTimeMillis - b.startTimeMillis)
           .map((item, index) => Object.assign({}, item, { index }));
 
