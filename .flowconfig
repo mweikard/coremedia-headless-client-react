@@ -1,8 +1,14 @@
 [ignore]
-.*/node_modules/
-.*/build/.*
-.*/__tests__/.*
-.*/__mocks__/.*
+<PROJECT_ROOT>/node_modules/lodash/.*
+<PROJECT_ROOT>/node_modules/prop-types/.*
+<PROJECT_ROOT>/node_modules/react-media/.*
+<PROJECT_ROOT>/node_modules/react-modal/.*
+<PROJECT_ROOT>/node_modules/react-player/.*
+<PROJECT_ROOT>/node_modules/styled-components/.*
+<PROJECT_ROOT>/node_modules/uuid/.*
+<PROJECT_ROOT>/build/.*
+<PROJECT_ROOT>/src/.*/__tests__/.*
+<PROJECT_ROOT>/src/.*/__mocks__/.*
 
 [include]
 
