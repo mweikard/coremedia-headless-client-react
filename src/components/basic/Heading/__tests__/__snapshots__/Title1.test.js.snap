@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title1 Component should render correctly 1`] = `
+.c0 {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 6rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1.6em;
+  color: #000;
+}
+
+<h1
+  className="c0"
+>
+  Content
+</h1>
+`;

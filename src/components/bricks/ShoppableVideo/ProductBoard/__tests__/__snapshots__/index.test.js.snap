@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductBoard Component should render correctly for mobile devices 1`] = `
+exports[`ProductBoard Component should render correctly for breakpoint below sm 1`] = `
 <React.Fragment>
   <ReloadBox
     theme={
       Object {
         "breakpoints": Object {
-          "tablet": 768,
+          "min": [Function],
         },
       }
     }
@@ -16,12 +16,21 @@ exports[`ProductBoard Component should render correctly for mobile devices 1`] =
     />
   </ReloadBox>
   <ProductBoardWrapper
+    color="primary"
     theme={
       Object {
         "breakpoints": Object {
-          "tablet": 768,
+          "min": [Function],
         },
-        "name": "default",
+        "palette": Object {
+          "primary": Object {
+            "color": "rgb(0, 108, 174)",
+            "text": "rgba(255,255,255,0.87)",
+          },
+          "surface": Object {
+            "color": "#fff",
+          },
+        },
       }
     }
   >
@@ -33,7 +42,7 @@ exports[`ProductBoard Component should render correctly for mobile devices 1`] =
 </React.Fragment>
 `;
 
-exports[`ProductBoard Component should render correctly for mobile devices 2`] = `
+exports[`ProductBoard Component should render correctly for breakpoint below sm 2`] = `
 <TransitionGroup
   childFactory={[Function]}
   component={[Function]}
@@ -92,9 +101,7 @@ exports[`ProductBoard Component should render correctly for mobile devices 2`] =
     theme={
       Object {
         "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+          "min": [Function],
         },
       }
     }
@@ -106,7 +113,7 @@ exports[`ProductBoard Component should render correctly for mobile devices 2`] =
 </TransitionGroup>
 `;
 
-exports[`ProductBoard Component should render correctly for mobile devices 3`] = `
+exports[`ProductBoard Component should render correctly for breakpoint below sm 3`] = `
 <ProductCard
   entered={false}
   handleClick={[MockFunction handleClick]}
@@ -115,11 +122,12 @@ exports[`ProductBoard Component should render correctly for mobile devices 3`] =
   pictureLink="Link 3"
   pictureTitle="Picture Title 3"
   price={100}
+  ratio="portrait_ratio5x6"
   title="Title 3"
 />
 `;
 
-exports[`ProductBoard Component should render correctly for mobile devices 4`] = `
+exports[`ProductBoard Component should render correctly for breakpoint below sm 4`] = `
 <ProductCard
   entered={false}
   handleClick={[MockFunction handleClick]}
@@ -128,11 +136,12 @@ exports[`ProductBoard Component should render correctly for mobile devices 4`] =
   pictureLink="Link 2"
   pictureTitle="Picture Title 2"
   price={100}
+  ratio="portrait_ratio5x6"
   title="Title 2"
 />
 `;
 
-exports[`ProductBoard Component should render correctly for mobile devices 5`] = `
+exports[`ProductBoard Component should render correctly for breakpoint below sm 5`] = `
 <ProductCard
   entered={false}
   handleClick={[MockFunction handleClick]}
@@ -141,17 +150,18 @@ exports[`ProductBoard Component should render correctly for mobile devices 5`] =
   pictureLink="Link 1"
   pictureTitle="Picture Title 1"
   price={100}
+  ratio="portrait_ratio5x6"
   title="Title 1"
 />
 `;
 
-exports[`ProductBoard Component should render correctly for tablet and larger devices 1`] = `
+exports[`ProductBoard Component should render correctly for breakpoint sm and above 1`] = `
 <React.Fragment>
   <ReloadBox
     theme={
       Object {
         "breakpoints": Object {
-          "tablet": 768,
+          "min": [Function],
         },
       }
     }
@@ -161,12 +171,21 @@ exports[`ProductBoard Component should render correctly for tablet and larger de
     />
   </ReloadBox>
   <ProductBoardWrapper
+    color="primary"
     theme={
       Object {
         "breakpoints": Object {
-          "tablet": 768,
+          "min": [Function],
         },
-        "name": "default",
+        "palette": Object {
+          "primary": Object {
+            "color": "rgb(0, 108, 174)",
+            "text": "rgba(255,255,255,0.87)",
+          },
+          "surface": Object {
+            "color": "#fff",
+          },
+        },
       }
     }
   >
@@ -178,7 +197,7 @@ exports[`ProductBoard Component should render correctly for tablet and larger de
 </React.Fragment>
 `;
 
-exports[`ProductBoard Component should render correctly for tablet and larger devices 2`] = `
+exports[`ProductBoard Component should render correctly for breakpoint sm and above 2`] = `
 <TransitionGroup
   childFactory={[Function]}
   component={[Function]}
@@ -236,7 +255,7 @@ exports[`ProductBoard Component should render correctly for tablet and larger de
 </TransitionGroup>
 `;
 
-exports[`ProductBoard Component should render correctly for tablet and larger devices 3`] = `
+exports[`ProductBoard Component should render correctly for breakpoint sm and above 3`] = `
 <ProductCard
   entered={false}
   handleClick={[MockFunction handleClick]}
@@ -245,11 +264,12 @@ exports[`ProductBoard Component should render correctly for tablet and larger de
   pictureLink="Link 1"
   pictureTitle="Picture Title 1"
   price={100}
+  ratio="portrait_ratio5x6"
   title="Title 1"
 />
 `;
 
-exports[`ProductBoard Component should render correctly for tablet and larger devices 4`] = `
+exports[`ProductBoard Component should render correctly for breakpoint sm and above 4`] = `
 <ProductCard
   entered={false}
   handleClick={[MockFunction handleClick]}
@@ -258,11 +278,12 @@ exports[`ProductBoard Component should render correctly for tablet and larger de
   pictureLink="Link 2"
   pictureTitle="Picture Title 2"
   price={100}
+  ratio="portrait_ratio5x6"
   title="Title 2"
 />
 `;
 
-exports[`ProductBoard Component should render correctly for tablet and larger devices 5`] = `
+exports[`ProductBoard Component should render correctly for breakpoint sm and above 5`] = `
 <ProductCard
   entered={false}
   handleClick={[MockFunction handleClick]}
@@ -271,6 +292,7 @@ exports[`ProductBoard Component should render correctly for tablet and larger de
   pictureLink="Link 3"
   pictureTitle="Picture Title 3"
   price={100}
+  ratio="portrait_ratio5x6"
   title="Title 3"
 />
 `;

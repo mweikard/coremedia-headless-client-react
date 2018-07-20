@@ -1,21 +1,18 @@
 // @flow
-import type { ComponentType } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-type Props = {
-  translateX: number,
-};
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const ThumbnailsContainer: ComponentType<Props> = styled.div`
-  transform: translateX(${props => `${props.translateX}px`});
-  transition: transform 0.45s ease-out;
-`;
+const styles = (theme, props) => ({
+  transform: `translateX(${props.translateX}px)`,
+  transition: 'transform 0.45s ease-out',
+});
 
-ThumbnailsContainer.displayName = 'ThumbnailsContainer';
+const Wrapper = withStyles(styles, 'ShoppableVideoThumbnailBarContainer')(Box);
 
-ThumbnailsContainer.propTypes = {
+Wrapper.propTypes = {
   translateX: PropTypes.number.isRequired,
 };
 
-export default ThumbnailsContainer;
+export default Wrapper;

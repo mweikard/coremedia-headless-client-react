@@ -47,7 +47,9 @@ const composeContent = ({
   }
   if (teaserText) {
     content.push(
-      <Abstract key="abstract" color={color} dangerouslySetInnerHTML={{ __html: teaserText }} />
+      <Abstract key="abstract" color={color}>
+        {teaserText}
+      </Abstract>
     );
   }
   if (text) {

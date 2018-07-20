@@ -12,6 +12,7 @@ type Props = {
   pictureAlt: string,
   handleClick: (ev: SyntheticEvent<HTMLButtonElement>) => void,
   active: boolean,
+  ratio: string,
 };
 
 class Thumbnail extends React.Component<Props> {
@@ -22,6 +23,11 @@ class Thumbnail extends React.Component<Props> {
     pictureAlt: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
+    ratio: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    ratio: 'portrait_ratio3x4', //'thumbnail',
   };
 
   shouldComponentUpdate(nextProps: Props) {
@@ -35,10 +41,24 @@ class Thumbnail extends React.Component<Props> {
   }
 
   render() {
-    const { ariaLabel, pictureLink, pictureTitle, pictureAlt, handleClick, active } = this.props;
+    const {
+      ariaLabel,
+      pictureLink,
+      pictureTitle,
+      pictureAlt,
+      handleClick,
+      active,
+      ratio,
+    } = this.props;
     return (
       <LinkButton active={active} ariaLabel={ariaLabel} onClick={handleClick}>
-        <Picture link={pictureLink} ratio="thumbnail" title={pictureTitle} alt={pictureAlt} />
+        <Picture
+          link={pictureLink}
+          ratio={ratio}
+          title={pictureTitle}
+          alt={pictureAlt}
+          responsive={false}
+        />
       </LinkButton>
     );
   }

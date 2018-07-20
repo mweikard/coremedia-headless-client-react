@@ -2,13 +2,21 @@
 
 exports[`QuickInfo Component should render correctly 1`] = `
 <Modal
-  contentLabel="Minimal Modal Example"
+  contentLabel="Title"
   isOpen={true}
   onRequestClose={[MockFunction handleClose]}
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
+      },
+      "palette": Object {
+        "overlay": Object {
+          "color": "rgba(173,173,173,0.9)",
+        },
+        "surface": Object {
+          "color": "#fff",
+        },
       },
     }
   }
@@ -16,34 +24,31 @@ exports[`QuickInfo Component should render correctly 1`] = `
   <CloseButton
     handleClick={[MockFunction handleClose]}
   />
-  <ContentBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Title
+  <ContentBox>
+    <Title3
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "typography": Object {
+            "title3": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "4rem",
+              "fontWeight": 300,
+              "lineHeight": "1.4em",
+              "textTransform": "uppercase",
+            },
           },
-          "name": "default",
         }
       }
     >
       Title
-    </Title>
+    </Title3>
     <ProductBox
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "name": "default",
         }
       }
     >
@@ -57,50 +62,57 @@ exports[`QuickInfo Component should render correctly 1`] = `
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
-            "name": "default",
           }
         }
       >
-        <P
+        <Description
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "typography": Object {
+                "body1": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "1rem",
+                  "fontWeight": 400,
+                  "lineHeight": "1.31em",
+                },
               },
-              "name": "default",
             }
           }
         >
           Text
-        </P>
-        <H3
+        </Description>
+        <PriceInfo
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "typography": Object {
+                "body1": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "1rem",
+                  "fontWeight": 400,
+                  "lineHeight": "1.31em",
+                },
               },
-              "name": "default",
             }
           }
         >
           Title EUR 100
-        </H3>
+        </PriceInfo>
         <Button
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "small": 480,
-                "tablet": 768,
+              "typography": Object {
+                "button": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "1rem",
+                  "fontWeight": 500,
+                  "textTransform": "none",
+                },
               },
-              "name": "default",
             }
           }
         >

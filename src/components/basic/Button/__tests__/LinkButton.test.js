@@ -7,9 +7,7 @@ import LinkButton from '../LinkButton';
 
 describe('LinkButton Component', () => {
   it('should render correctly', () => {
-    const tree = renderer
-      .create(<LinkButton href="https://labs.coremedia.com">Content</LinkButton>)
-      .toJSON();
+    const tree = renderer.create(<LinkButton ariaLabel="Label">Content</LinkButton>).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

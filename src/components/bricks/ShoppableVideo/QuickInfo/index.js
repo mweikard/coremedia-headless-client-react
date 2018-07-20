@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 
 import Modal from './Modal';
 import Picture from '../../Picture';
-import { Button } from '../../../basic/Button';
-import { P } from '../../../basic/Paragraph';
 import CloseButton from './CloseButton';
-import Title from './Title';
 import ContentBox from './ContentBox';
 import ProductInfo from './ProductInfo';
 import ProductBox from './ProductBox';
-import H3 from './H3';
+import PriceInfo from './PriceInfo';
+import Description from './Description';
+import { Title3 } from '../../../basic/Heading';
+import { Button } from '../../../basic/Button';
 
 /*injectGlobal`
   .ReactModal__Body--open {
@@ -22,25 +22,26 @@ import H3 from './H3';
 
 type Props = {
   item: ?Object,
+  ratio?: string,
   handleClose: (ev: SyntheticEvent<HTMLButtonElement>) => void,
 };
 
-const QuickInfo = ({ item, handleClose }: Props) => (
-  <Modal isOpen={!!item} contentLabel="Minimal Modal Example" onRequestClose={handleClose}>
+const QuickInfo = ({ item, ratio = 'quickview_ratio5x6', handleClose }: Props) => (
+  <Modal isOpen={!!item} contentLabel={item && item.teaserTitle} onRequestClose={handleClose}>
     <CloseButton handleClick={handleClose} />
     {item && (
       <ContentBox>
-        <Title>{item.teaserTitle}</Title>
+        <Title3>{item.teaserTitle}</Title3>
         <ProductBox>
           <Picture
             link={item.pictureLink}
-            ratio="quickview_ratio5x6"
+            ratio={ratio}
             title={item.pictureTitle}
             alt={item.pictureAlt}
           />
           <ProductInfo>
-            <P>{item.teaserText}</P>
-            <H3>{`${item.teaserTitle} EUR ${item.price}`}</H3>
+            <Description>{item.teaserText}</Description>
+            <PriceInfo>{`${item.teaserTitle} EUR ${item.price}`}</PriceInfo>
             <Button>order</Button>
           </ProductInfo>
         </ProductBox>

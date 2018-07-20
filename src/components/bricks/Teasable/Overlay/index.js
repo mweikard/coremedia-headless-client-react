@@ -5,11 +5,12 @@ import PropTypes from 'prop-types';
 import CTA from '../../CTA';
 import Box from './Box';
 import FixedBox from './FixedBox';
-import Headline from './Headline';
-import Text from './Text';
+import Title from './Title';
+import Subtitle from './Subtitle';
 import TextBox from './TextBox';
 
 type Props = {
+  variant: string,
   fixed?: boolean,
   width: number,
   height: string,
@@ -22,6 +23,7 @@ type Props = {
 };
 
 const Overlay = ({
+  variant,
   fixed = true,
   width,
   height,
@@ -34,9 +36,17 @@ const Overlay = ({
 }: Props) => {
   const textBox = (
     <TextBox>
-      {title && <Headline>{title}</Headline>}
-      {text && <Text dangerouslySetInnerHTML={{ __html: text }} />}
-      {ctaShow && ctaText && <CTA text={ctaText} />}
+      {title && (
+        <Title variant={variant} color={color}>
+          {title}
+        </Title>
+      )}
+      {text && (
+        <Subtitle color={color}>
+          <div dangerouslySetInnerHTML={{ __html: text }} />
+        </Subtitle>
+      )}
+      {ctaShow && ctaText && <CTA label={ctaText} color={color} />}
     </TextBox>
   );
   return fixed ? (

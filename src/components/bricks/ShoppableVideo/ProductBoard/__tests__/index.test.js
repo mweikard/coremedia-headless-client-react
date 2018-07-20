@@ -21,7 +21,7 @@ describe('ProductBoard Component', () => {
     window.matchMedia = originalMatchMedia;
   });
 
-  it('should render correctly for mobile devices', () => {
+  it('should render correctly for breakpoint below sm', () => {
     window.matchMedia = createMockMediaMatcher(false);
 
     const thumbnails = [
@@ -67,10 +67,12 @@ describe('ProductBoard Component', () => {
         productboardOverflow={false}
         theme={{
           breakpoints: {
-            small: 480,
-            tablet: 768,
-            desktop: 992,
-            large: 1280,
+            values: {
+              sm: 768,
+              md: 992,
+              lg: 1280,
+              xl: 1920,
+            },
           },
         }}
       />
@@ -86,7 +88,7 @@ describe('ProductBoard Component', () => {
     });
   });
 
-  it('should render correctly for tablet and larger devices', () => {
+  it('should render correctly for breakpoint sm and above', () => {
     window.matchMedia = createMockMediaMatcher(true);
 
     const thumbnails = [
@@ -132,10 +134,12 @@ describe('ProductBoard Component', () => {
         productboardOverflow={false}
         theme={{
           breakpoints: {
-            small: 480,
-            tablet: 768,
-            desktop: 992,
-            large: 1280,
+            values: {
+              sm: 768,
+              md: 992,
+              lg: 1280,
+              xl: 1920,
+            },
           },
         }}
       />

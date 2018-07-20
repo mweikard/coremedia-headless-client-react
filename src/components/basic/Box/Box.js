@@ -1,28 +1,31 @@
 // @flow
-import styled from 'styled-components';
-import theme from 'styled-theming';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
-const fontFamily = theme('name', {
-  default:
-    '"Simplon Norm Light", "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Arial, Helvetica, sans-serif',
-  hkm: 'Helvetica, Arial, sans-serif',
-});
+import withStyles from '../../styles/withStyles';
 
-const Box = styled.div`
-  margin: 0;
-  padding: 0;
-  font-family: ${fontFamily};
-  line-height: 1.4;
-  box-sizing: border-box;
-  white-space: normal;
-`;
-
-Box.displayName = 'Box';
-
-Box.defaultProps = {
-  theme: {
-    name: 'default',
-  },
+type Props = {
+  className: string,
+  children: React.Node,
 };
 
-export default Box;
+const Box = React.forwardRef(({ className, children }: Props, ref) => (
+  <div ref={ref} className={className}>
+    {children}
+  </div>
+));
+
+Box.displayName = 'BasicBox';
+
+Box.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+const styles = {
+  margin: 0,
+  padding: 0,
+  boxSizing: 'border-box',
+};
+
+export default withStyles(styles, 'BasicBox')(Box);

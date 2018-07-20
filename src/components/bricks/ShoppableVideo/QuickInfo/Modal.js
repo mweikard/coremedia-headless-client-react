@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ReactModalAdapter from './ReactModalAdapter';
-import { media } from '../../../../styles/themes/utils';
 
 const Modal = styled(ReactModalAdapter).attrs({
   overlayClassName: {
@@ -24,7 +23,7 @@ const Modal = styled(ReactModalAdapter).attrs({
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(173, 173, 173, 0.9);
+    background-color: ${props => props.theme.palette.overlay.color};
     cursor: pointer;
     z-index: 99999;
     opacity: 0;
@@ -43,7 +42,7 @@ const Modal = styled(ReactModalAdapter).attrs({
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: ${props => props.theme.palette.surface.color};
     box-sizing: content-box;
     cursor: default;
     z-index: 99999;
@@ -56,7 +55,7 @@ const Modal = styled(ReactModalAdapter).attrs({
       transform: scale(0.5);
       transition: all 150ms ease-in;
     }
-    ${props => media(props.theme.breakpoints.tablet)`
+    ${props => props.theme.breakpoints.min('sm')} {
       top: 50%;
       left: 50%;
       width: 550px;
@@ -72,7 +71,7 @@ const Modal = styled(ReactModalAdapter).attrs({
         transform: translate(-50%, -50%) scale(0.5);
         transition: all 150ms ease-in;
       }
-    `};
+    }
   }
 `;
 
@@ -81,7 +80,7 @@ Modal.displayName = 'Modal';
 Modal.propTypes = {
   theme: PropTypes.shape({
     breakpoints: PropTypes.shape({
-      tablet: PropTypes.number.isRequired,
+      min: PropTypes.func.isRequired,
     }).isRequired,
   }),
 };
@@ -89,7 +88,15 @@ Modal.propTypes = {
 Modal.defaultProps = {
   theme: {
     breakpoints: {
-      tablet: 768,
+      min: () => `@media (min-width:${768 / 16}em)`,
+    },
+    palette: {
+      surface: {
+        color: '#fff',
+      },
+      overlay: {
+        color: 'rgba(173,173,173,0.9)',
+      },
     },
   },
 };

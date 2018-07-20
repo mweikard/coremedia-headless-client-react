@@ -1,23 +1,18 @@
 // @flow
-import type { ComponentType } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-type Props = {
-  ariaLabel: string,
+import { LinkButton } from '../../../basic/Button';
+import withStyles from '../../../styles/withStyles';
+
+const styles = {
+  width: '100%',
 };
 
-const LinkButton: ComponentType<Props> = styled.a.attrs({
-  role: 'button',
-  'aria-label': props => props.ariaLabel,
-})`
-  display: inline-block;
-  width: 100%;
-`;
-LinkButton.displayName = 'LinkButton';
+const Wrapper = withStyles(styles, 'ShoppableVideoProductCardLinkButton')(LinkButton);
 
-LinkButton.propTypes = {
+Wrapper.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
-export default LinkButton;
+export default Wrapper;

@@ -3,10 +3,16 @@
 exports[`ProgressBar Component should render correctly with custom props 1`] = `
 <ProgressBox>
   <Bar
+    color="primary"
     posX={10}
     theme={
       Object {
-        "name": "default",
+        "palette": Object {
+          "primary": Object {
+            "color": "rgb(0, 108, 174)",
+            "text": "rgba(255,255,255,0.87)",
+          },
+        },
       }
     }
     width={20}
@@ -17,10 +23,16 @@ exports[`ProgressBar Component should render correctly with custom props 1`] = `
 exports[`ProgressBar Component should render correctly with default props 1`] = `
 <ProgressBox>
   <Bar
+    color="primary"
     posX={0}
     theme={
       Object {
-        "name": "default",
+        "palette": Object {
+          "primary": Object {
+            "color": "rgb(0, 108, 174)",
+            "text": "rgba(255,255,255,0.87)",
+          },
+        },
       }
     }
     width={0}

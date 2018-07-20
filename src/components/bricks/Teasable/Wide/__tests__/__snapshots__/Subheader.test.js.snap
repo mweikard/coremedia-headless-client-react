@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subheader Component should render correctly 1`] = `
+.c0 {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1.1em;
+  color: #000;
+  margin-top: 1em;
+  padding: 0;
+  color: rgba(0,0,0,0.87);
+}
+
+<h6
+  className="c0"
+  color="white"
+>
+  Content
+</h6>
+`;

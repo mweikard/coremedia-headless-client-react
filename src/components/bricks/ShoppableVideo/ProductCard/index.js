@@ -20,6 +20,7 @@ type Props = {
   pictureAlt: string,
   title: string,
   price: number,
+  ratio: string,
   handleClick: (ev: SyntheticEvent<HTMLButtonElement>) => void,
 };
 
@@ -32,7 +33,12 @@ class ProductCard extends React.Component<Props, {}> {
     pictureAlt: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    ratio: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    ratio: 'portrait_ratio5x6',
   };
 
   shouldComponentUpdate(nextProps: Props) {
@@ -56,6 +62,7 @@ class ProductCard extends React.Component<Props, {}> {
       pictureAlt,
       title,
       price,
+      ratio,
       handleClick,
     } = this.props;
     return (
@@ -64,7 +71,7 @@ class ProductCard extends React.Component<Props, {}> {
           <LinkButton onClick={handleClick} ariaLabel={`Open quick view for "${title}"`}>
             <Picture
               link={pictureLink}
-              ratio="portrait_ratio5x6"
+              ratio={ratio}
               title={pictureTitle}
               alt={pictureAlt}
               stretch

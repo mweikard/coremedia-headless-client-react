@@ -2,12 +2,18 @@
 
 exports[`Button Component should render correctly 1`] = `
 .c0 {
-  font-weight: 400;
+  color: inherit;
+  background: inherit;
+  margin: 0;
   border: 2px solid;
   padding: 0.5em 1em;
-  background: inherit;
   text-align: center;
   cursor: pointer;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: none;
+  color: #000;
 }
 
 <button

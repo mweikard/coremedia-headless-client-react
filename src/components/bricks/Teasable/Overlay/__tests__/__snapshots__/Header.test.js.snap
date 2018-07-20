@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should render correctly 1`] = `
+.c0 {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1.4em;
+  color: #000;
+  color: #000;
+}
+
+<h3
+  className="c0"
+  color="white"
+>
+  Content
+</h3>
+`;

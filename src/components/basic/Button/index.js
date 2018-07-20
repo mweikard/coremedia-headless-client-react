@@ -1,5 +1,3 @@
-import Button from './Button';
-import LinkButton from './LinkButton';
-import IconButton from './IconButton';
-
-export { Button, LinkButton, IconButton };
+export { default as Button } from './Button';
+export { default as IconButton } from './IconButton';
+export { default as LinkButton } from './LinkButton';

@@ -1,24 +1,14 @@
 // @flow
-import styled from 'styled-components';
-import { media } from '../../../../styles/themes/utils';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const TextBoxWrapper = styled.div`
-  padding: 2rem;
-  ${props => media(props.theme.breakpoints.tablet)`
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  `};
-`;
-
-TextBoxWrapper.displayName = 'TextBoxWrapper';
-
-TextBoxWrapper.defaultProps = {
-  theme: {
-    breakpoints: {
-      tablet: 768,
-    },
+const styles = (theme, props) => ({
+  padding: '2rem',
+  [theme.breakpoints.min('sm')]: {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
   },
-};
+});
 
-export default TextBoxWrapper;
+export default withStyles(styles, 'TeaserWideTextBoxWrapper')(Box);

@@ -2,9 +2,9 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import Headline from './Headline';
+import Title from './Title';
 import PictureBox from './PictureBox';
-import Text from './Text';
+import Subtitle from './Subtitle';
 import TextBox from './TextBox';
 import TextBoxWrapper from './TextBoxWrapper';
 import Picture from '../../Picture';
@@ -44,13 +44,20 @@ const composeContent = ({
     content.push(
       <TextBox key="textbox" color={color}>
         <TextBoxWrapper>
-          {title && <Headline>{title}</Headline>}
-          {text && <Text dangerouslySetInnerHTML={{ __html: text }} />}
+          {title && <Title color={color}>{title}</Title>}
+          {text && (
+            <Subtitle color={color}>
+              <div dangerouslySetInnerHTML={{ __html: text }} />
+            </Subtitle>
+          )}
           {params &&
             params.ctaShow &&
             !!url && (
               <CTA
-                text={params && params.ctaText ? params && params.ctaText : Strings.teaser_cta_text}
+                color={color}
+                label={
+                  params && params.ctaText ? params && params.ctaText : Strings.teaser_cta_text
+                }
               />
             )}
         </TextBoxWrapper>

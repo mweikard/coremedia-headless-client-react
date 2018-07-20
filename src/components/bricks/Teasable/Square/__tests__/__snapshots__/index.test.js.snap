@@ -20,6 +20,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Link and Overlay
       ctaText="More"
       height="45%"
       key="overlay"
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -67,6 +68,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Link, Picture an
       key="overlay"
       text="Discover the new CoreMedia Headless Services."
       title="Content Management at a new Scale with CoreMedia CaaS"
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -96,6 +98,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Link, Picture an
       key="overlay"
       text="Discover the new CoreMedia Headless Services."
       title="Content Management at a new Scale with CoreMedia CaaS"
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -124,6 +127,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Link, Picture an
       height="45%"
       key="overlay"
       title="Content Management at a new Scale with CoreMedia CaaS"
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -152,6 +156,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Link, Picture an
       height="45%"
       key="overlay"
       text="Discover the new CoreMedia Headless Services."
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -180,6 +185,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Link, Picture an
       height="45%"
       key="overlay"
       text="Discover the new CoreMedia Headless Services."
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -208,6 +214,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Link, Picture an
       height="45%"
       key="overlay"
       title="Content Management at a new Scale with CoreMedia CaaS"
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -235,6 +242,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Link, Picture an
       ctaText="More"
       height="45%"
       key="overlay"
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -251,6 +259,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Overlay 1`] = `
       ctaText="More"
       height="45%"
       key="overlay"
+      variant="square"
       width={100}
     />
   </TeaserBox>
@@ -307,6 +316,7 @@ exports[`SquareTeaser Component should render SquareTeaser with Picture and Over
       ctaText="More"
       height="45%"
       key="overlay"
+      variant="square"
       width={100}
     />
   </TeaserBox>

@@ -1,11 +1,9 @@
 // @flow
-import { P } from '../../../basic/Paragraph';
+import { Title6 } from '../../../basic/Heading';
+import withStyles from '../../../styles/withStyles';
 
-const ProductName = P.extend`
-  font-weight: 400;
-  padding-bottom: 10px;
-`;
+const styles = {
+  paddingTop: '10px',
+};
 
-ProductName.displayName = 'ProductName';
-
-export default ProductName;
+export default withStyles(styles, 'ShoppableProductCardProductName')(Title6);

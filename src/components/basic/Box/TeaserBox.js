@@ -1,16 +1,32 @@
 // @flow
-import styled from 'styled-components';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
-const TeaserBox = styled.div`
-  position: relative;
-  border: 0;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  > * {
-    box-sizing: border-box;
-  }
-`;
-TeaserBox.displayName = 'TeaserBox';
+import withStyles from '../../styles/withStyles';
 
-export default TeaserBox;
+type Props = {
+  className: string,
+  children: React.Node,
+};
+
+const TeaserBox = ({ className, children }: Props) => <div className={className}>{children}</div>;
+
+TeaserBox.displayName = 'BasicTeaserBox';
+
+TeaserBox.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+const styles = {
+  position: 'relative',
+  border: 0,
+  boxSizing: 'border-box',
+  width: '100%',
+  height: '100%',
+  '> *': {
+    boxSizing: 'border-box',
+  },
+};
+
+export default withStyles(styles, 'BasicTeaserBox')(TeaserBox);

@@ -3,10 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HtmlToReact from 'html-to-react';
 
-import { H1, H2, H3 } from './Heading';
-import { P } from './Paragraph';
+import { Title1, Title2, Title3, Title4, Title5, Title6 } from './Heading';
+import P from './Paragraph';
 import { Wrapper, PictureWrapper } from './Wrapper';
 import Picture from '../Picture';
+import { Link } from '../../basic/Link';
 
 type Props = {
   text: string,
@@ -21,7 +22,7 @@ const RichtextBrick = ({ text, color }: Props) => {
         return node.name === 'h1';
       },
       processNode: function(node, children, index) {
-        return <H1 key={index}>{children}</H1>;
+        return <Title1 key={index}>{children}</Title1>;
       },
     },
     {
@@ -29,7 +30,7 @@ const RichtextBrick = ({ text, color }: Props) => {
         return node.name === 'h2';
       },
       processNode: function(node, children, index) {
-        return <H2 key={index}>{children}</H2>;
+        return <Title2 key={index}>{children}</Title2>;
       },
     },
     {
@@ -37,7 +38,31 @@ const RichtextBrick = ({ text, color }: Props) => {
         return node.name === 'h3';
       },
       processNode: function(node, children, index) {
-        return <H3 key={index}>{children}</H3>;
+        return <Title3 key={index}>{children}</Title3>;
+      },
+    },
+    {
+      shouldProcessNode: function(node) {
+        return node.name === 'h4';
+      },
+      processNode: function(node, children, index) {
+        return <Title4 key={index}>{children}</Title4>;
+      },
+    },
+    {
+      shouldProcessNode: function(node) {
+        return node.name === 'h5';
+      },
+      processNode: function(node, children, index) {
+        return <Title5 key={index}>{children}</Title5>;
+      },
+    },
+    {
+      shouldProcessNode: function(node) {
+        return node.name === 'h6';
+      },
+      processNode: function(node, children, index) {
+        return <Title6 key={index}>{children}</Title6>;
       },
     },
     {
@@ -46,6 +71,19 @@ const RichtextBrick = ({ text, color }: Props) => {
       },
       processNode: function(node, children, index) {
         return <P key={index}>{children}</P>;
+      },
+    },
+    {
+      shouldProcessNode: function(node) {
+        return node.name === 'a';
+      },
+      processNode: function(node, children, index) {
+        const url = node.attribs['href'];
+        return (
+          <Link key={index} url={url}>
+            {children}
+          </Link>
+        );
       },
     },
     {

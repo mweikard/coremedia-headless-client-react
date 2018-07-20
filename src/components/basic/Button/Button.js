@@ -1,42 +1,40 @@
 // @flow
-import styled, { css } from 'styled-components';
-import theme from 'styled-theming';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
-const buttonStyles = theme('name', {
-  default: css`
-    font-weight: 400;
-    border: 2px solid;
-    padding: 0.5em 1em;
-    background: inherit;
-  `,
-  hkm: css`
-    font-weight: 300;
-    font-size: 0.8em;
-    border: 1px solid #ea989d;
-    padding: 5px 10px;
-    color: #272727;
-    background: linear-gradient(180deg, #fbe3e4, #fabfc0);
-    text-transform: uppercase;
-  `,
-});
+import withStyles from '../../styles/withStyles';
 
-const Button = styled.button`
-  ${buttonStyles};
-  text-align: center;
-  cursor: pointer;
-`;
-Button.displayName = 'Button';
-
-Button.defaultProps = {
-  theme: {
-    name: 'default',
-    breakpoints: {
-      small: 480,
-      tablet: 768,
-      desktop: 992,
-      large: 1280,
-    },
-  },
+type Props = {
+  className: string,
+  onClick?: (event: SyntheticEvent<HTMLButtonElement>) => void,
+  tabIndex?: number,
+  children: React.Node,
 };
 
-export default Button;
+const Button = ({ className, onClick, tabIndex, children }: Props) => (
+  <button type="button" tabIndex={tabIndex} className={className} onClick={onClick}>
+    {children}
+  </button>
+);
+
+Button.displayName = 'BasicButton';
+
+Button.propTypes = {
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  tabIndex: PropTypes.number,
+  children: PropTypes.node.isRequired,
+};
+
+const styles = (theme, props) => ({
+  color: 'inherit',
+  background: 'inherit',
+  margin: 0,
+  border: '2px solid',
+  padding: '0.5em 1em',
+  textAlign: 'center',
+  cursor: 'pointer',
+  ...theme.typography.button,
+});
+
+export default withStyles(styles, 'BasicButton')(Button);

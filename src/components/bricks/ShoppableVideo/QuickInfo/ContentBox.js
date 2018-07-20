@@ -1,10 +1,9 @@
 // @flow
 import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const ContentBox = Box.extend`
-  padding: 40px 40px 50px 40px;
-`;
+const styles = {
+  padding: '40px 40px 50px 40px',
+};
 
-ContentBox.displayName = 'ContentBox';
-
-export default ContentBox;
+export default withStyles(styles, 'ShoppableVideoQuickInfoContentBox')(Box);

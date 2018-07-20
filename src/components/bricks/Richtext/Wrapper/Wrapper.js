@@ -1,10 +1,10 @@
 // @flow
-import { P } from '../../../basic/Paragraph';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const Wrapper = P.withComponent('div').extend`
-  margin-top: 2em;
-  padding: 0 2em;
-`;
-Wrapper.displayName = 'Wrapper';
+const styles = {
+  marginTop: '2em',
+  padding: '0 2em',
+};
 
-export default Wrapper;
+export default withStyles(styles, 'RichtextWrapper')(Box);

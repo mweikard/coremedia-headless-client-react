@@ -19,15 +19,16 @@ exports[`WideTeaser Component should render WideTeaser with Link and CTA (custom
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -36,13 +37,14 @@ exports[`WideTeaser Component should render WideTeaser with Link and CTA (custom
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
         <CTABrick
-          text="Label"
+          color="blue"
+          label="Label"
         />
       </TextBoxWrapper>
     </TextBox>
@@ -61,15 +63,16 @@ exports[`WideTeaser Component should render WideTeaser with Link and CTA 1`] = `
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -78,13 +81,14 @@ exports[`WideTeaser Component should render WideTeaser with Link and CTA 1`] = `
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
         <CTABrick
-          text="More"
+          color="blue"
+          label="More"
         />
       </TextBoxWrapper>
     </TextBox>
@@ -102,7 +106,7 @@ exports[`WideTeaser Component should render WideTeaser with Link and Picture 1`]
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -131,7 +135,7 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -152,15 +156,16 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -169,26 +174,41 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
-        <Headline
+        <Header
+          color="blue"
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "palette": Object {
+                "additional": Object {
+                  "white": Object {
+                    "color": "rgb(255,255,255)",
+                    "text": "rgba(0, 0, 0, 0.87)",
+                  },
+                },
+                "common": Object {},
               },
-              "name": "default",
+              "typography": Object {
+                "title3": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "4rem",
+                  "fontWeight": 300,
+                  "lineHeight": "1.4em",
+                  "textTransform": "uppercase",
+                },
+              },
             }
           }
         >
           Content Management at a new Scale with CoreMedia CaaS
-        </Headline>
-        <Text
+        </Header>
+        <Subheader
+          color="blue"
           dangerouslySetInnerHTML={
             Object {
               "__html": "Discover the new CoreMedia Headless Services.",
@@ -196,17 +216,31 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
           }
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "palette": Object {
+                "additional": Object {
+                  "white": Object {
+                    "color": "rgb(255,255,255)",
+                    "text": "rgba(0, 0, 0, 0.87)",
+                  },
+                },
+                "common": Object {},
               },
-              "name": "default",
+              "typography": Object {
+                "title6": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "1rem",
+                  "fontWeight": 300,
+                  "lineHeight": "1.1em",
+                  "textTransform": "uppercase",
+                },
+              },
             }
           }
         />
         <CTABrick
-          text="More"
+          color="blue"
+          label="More"
         />
       </TextBoxWrapper>
     </TextBox>
@@ -224,7 +258,7 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -245,15 +279,16 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -262,26 +297,41 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
-        <Headline
+        <Header
+          color="blue"
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "palette": Object {
+                "additional": Object {
+                  "white": Object {
+                    "color": "rgb(255,255,255)",
+                    "text": "rgba(0, 0, 0, 0.87)",
+                  },
+                },
+                "common": Object {},
               },
-              "name": "default",
+              "typography": Object {
+                "title3": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "4rem",
+                  "fontWeight": 300,
+                  "lineHeight": "1.4em",
+                  "textTransform": "uppercase",
+                },
+              },
             }
           }
         >
           Content Management at a new Scale with CoreMedia CaaS
-        </Headline>
-        <Text
+        </Header>
+        <Subheader
+          color="blue"
           dangerouslySetInnerHTML={
             Object {
               "__html": "Discover the new CoreMedia Headless Services.",
@@ -289,12 +339,25 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
           }
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "palette": Object {
+                "additional": Object {
+                  "white": Object {
+                    "color": "rgb(255,255,255)",
+                    "text": "rgba(0, 0, 0, 0.87)",
+                  },
+                },
+                "common": Object {},
               },
-              "name": "default",
+              "typography": Object {
+                "title6": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "1rem",
+                  "fontWeight": 300,
+                  "lineHeight": "1.1em",
+                  "textTransform": "uppercase",
+                },
+              },
             }
           }
         />
@@ -314,7 +377,7 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -335,15 +398,16 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -352,25 +416,39 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
-        <Headline
+        <Header
+          color="blue"
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "palette": Object {
+                "additional": Object {
+                  "white": Object {
+                    "color": "rgb(255,255,255)",
+                    "text": "rgba(0, 0, 0, 0.87)",
+                  },
+                },
+                "common": Object {},
               },
-              "name": "default",
+              "typography": Object {
+                "title3": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "4rem",
+                  "fontWeight": 300,
+                  "lineHeight": "1.4em",
+                  "textTransform": "uppercase",
+                },
+              },
             }
           }
         >
           Content Management at a new Scale with CoreMedia CaaS
-        </Headline>
+        </Header>
       </TextBoxWrapper>
     </TextBox>
   </TeaserBox>
@@ -387,7 +465,7 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -408,15 +486,16 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -425,12 +504,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
-        <Text
+        <Subheader
+          color="blue"
           dangerouslySetInnerHTML={
             Object {
               "__html": "Discover the new CoreMedia Headless Services.",
@@ -438,12 +518,25 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
           }
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "palette": Object {
+                "additional": Object {
+                  "white": Object {
+                    "color": "rgb(255,255,255)",
+                    "text": "rgba(0, 0, 0, 0.87)",
+                  },
+                },
+                "common": Object {},
               },
-              "name": "default",
+              "typography": Object {
+                "title6": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "1rem",
+                  "fontWeight": 300,
+                  "lineHeight": "1.1em",
+                  "textTransform": "uppercase",
+                },
+              },
             }
           }
         />
@@ -463,7 +556,7 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -484,15 +577,16 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -501,12 +595,13 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
-        <Text
+        <Subheader
+          color="blue"
           dangerouslySetInnerHTML={
             Object {
               "__html": "Discover the new CoreMedia Headless Services.",
@@ -514,17 +609,31 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
           }
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "palette": Object {
+                "additional": Object {
+                  "white": Object {
+                    "color": "rgb(255,255,255)",
+                    "text": "rgba(0, 0, 0, 0.87)",
+                  },
+                },
+                "common": Object {},
               },
-              "name": "default",
+              "typography": Object {
+                "title6": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "1rem",
+                  "fontWeight": 300,
+                  "lineHeight": "1.1em",
+                  "textTransform": "uppercase",
+                },
+              },
             }
           }
         />
         <CTABrick
-          text="More"
+          color="blue"
+          label="More"
         />
       </TextBoxWrapper>
     </TextBox>
@@ -542,7 +651,7 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -563,15 +672,16 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -580,27 +690,42 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
-        <Headline
+        <Header
+          color="blue"
           theme={
             Object {
-              "breakpoints": Object {
-                "desktop": 992,
-                "large": 1280,
-                "tablet": 768,
+              "palette": Object {
+                "additional": Object {
+                  "white": Object {
+                    "color": "rgb(255,255,255)",
+                    "text": "rgba(0, 0, 0, 0.87)",
+                  },
+                },
+                "common": Object {},
               },
-              "name": "default",
+              "typography": Object {
+                "title3": Object {
+                  "color": "#000",
+                  "fontFamily": "Helvetica, Arial, sans-serif",
+                  "fontSize": "4rem",
+                  "fontWeight": 300,
+                  "lineHeight": "1.4em",
+                  "textTransform": "uppercase",
+                },
+              },
             }
           }
         >
           Content Management at a new Scale with CoreMedia CaaS
-        </Headline>
+        </Header>
         <CTABrick
-          text="More"
+          color="blue"
+          label="More"
         />
       </TextBoxWrapper>
     </TextBox>
@@ -618,7 +743,7 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -639,15 +764,16 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -656,13 +782,14 @@ exports[`WideTeaser Component should render WideTeaser with Link, Picture and CT
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
       >
         <CTABrick
-          text="More"
+          color="blue"
+          label="More"
         />
       </TextBoxWrapper>
     </TextBox>
@@ -678,7 +805,7 @@ exports[`WideTeaser Component should render WideTeaser with Picture (without par
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -704,7 +831,7 @@ exports[`WideTeaser Component should render WideTeaser with Picture 1`] = `
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -731,7 +858,7 @@ exports[`WideTeaser Component should render WideTeaser with Picture and CTA 1`] 
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
         }
       }
@@ -752,15 +879,16 @@ exports[`WideTeaser Component should render WideTeaser with Picture and CTA 1`] 
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -769,7 +897,7 @@ exports[`WideTeaser Component should render WideTeaser with Picture and CTA 1`] 
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }
@@ -788,15 +916,16 @@ exports[`WideTeaser Component should render WideTeaser without CTA 1`] = `
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "colors": Object {
-            "default": Object {
-              "bgsolid": "rgba(239, 223, 15, 1)",
-              "bgtrans": "rgba(239, 223, 15, 0.7)",
-              "fg": "#fafafa",
-              "huerotation": "5deg",
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
             },
+            "common": Object {},
           },
         }
       }
@@ -805,7 +934,7 @@ exports[`WideTeaser Component should render WideTeaser without CTA 1`] = `
         theme={
           Object {
             "breakpoints": Object {
-              "tablet": 768,
+              "min": [Function],
             },
           }
         }

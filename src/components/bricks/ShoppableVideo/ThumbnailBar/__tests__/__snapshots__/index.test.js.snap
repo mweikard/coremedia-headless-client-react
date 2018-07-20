@@ -16,6 +16,7 @@ exports[`ThumbnailBar Component should calculate posX and width for ProgressBar 
         pictureAlt="alt"
         pictureLink="coremedia:///image/6188/data"
         pictureTitle="picture title"
+        ratio="portrait_ratio3x4"
       />
     </ThumbnailsBox>
     <ProgressBar
@@ -42,6 +43,7 @@ exports[`ThumbnailBar Component should render correctly 1`] = `
         pictureAlt="alt"
         pictureLink="coremedia:///image/6188/data"
         pictureTitle="picture title"
+        ratio="portrait_ratio3x4"
       />
     </ThumbnailsBox>
     <ProgressBar

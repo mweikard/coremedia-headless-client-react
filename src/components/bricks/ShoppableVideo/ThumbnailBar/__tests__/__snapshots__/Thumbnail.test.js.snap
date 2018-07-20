@@ -9,7 +9,8 @@ exports[`Thumbnail Component should render correctly with default props 1`] = `
   <PictureBrick
     alt="Alt"
     link="coremedia:///image/6188/data"
-    ratio="thumbnail"
+    ratio="portrait_ratio3x4"
+    responsive={false}
     title="Title"
   />
 </LinkButton>

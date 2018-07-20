@@ -37,6 +37,7 @@ const composeContent = ({
     content.push(
       <Overlay
         key="overlay"
+        variant="square"
         width={100}
         height="45%"
         bottom="0%"

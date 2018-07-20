@@ -1,10 +1,9 @@
 // @flow
-import styled from 'styled-components';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const ThumbnailsWrapper = styled.div`
-  overflow: hidden;
-`;
+const styles = {
+  overflow: 'hidden',
+};
 
-ThumbnailsWrapper.displayName = 'ThumbnailsWrapper';
-
-export default ThumbnailsWrapper;
+export default withStyles(styles, 'ShoppableVideoThumbnailBarWrapper')(Box);

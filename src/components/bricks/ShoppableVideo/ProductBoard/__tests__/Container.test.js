@@ -8,35 +8,13 @@ import Container from '../Container';
 describe('Container Component', () => {
   it('should render correctly without overflow', () => {
     const tree = renderer
-      .create(
-        <Container
-          productboardOverflow={false}
-          theme={{
-            breakpoints: {
-              tablet: 768,
-            },
-          }}
-        >
-          Content
-        </Container>
-      )
+      .create(<Container productboardOverflow={false}>Content</Container>)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with overflow', () => {
     const tree = renderer
-      .create(
-        <Container
-          productboardOverflow={true}
-          theme={{
-            breakpoints: {
-              tablet: 768,
-            },
-          }}
-        >
-          Content
-        </Container>
-      )
+      .create(<Container productboardOverflow={true}>Content</Container>)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

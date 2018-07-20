@@ -1,31 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorBoundary Container should render ErrorBox Component 1`] = `
-<ErrorBox
-  theme={
-    Object {
-      "colors": Object {
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-        },
-      },
-    }
-  }
->
-  <H3
+<ErrorBox>
+  <Title3
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title3": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "4rem",
+            "fontWeight": 300,
+            "lineHeight": "1.4em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   >
     Something went wrong...
-  </H3>
+  </Title3>
   <Details>
     Error: I am an error message.
     <br />

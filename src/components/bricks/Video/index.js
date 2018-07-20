@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 
-import { TeaserBox } from '../../basic/Box';
 import Picture from '../Picture';
 import PosterBox from './PosterBox';
 import PlayButton from './PlayButton';
@@ -20,7 +19,8 @@ type Props = {
   pictureLink?: string,
   pictureTitle?: string,
   pictureAlt?: string,
-  handleProgress?: (playedSeconds: number, played: number) => void,
+  ratio: string,
+  handleProgress?: (playedSeconds: number) => void,
   handlePlay?: () => void,
   handlePause?: () => void,
   handleEnded?: () => void,
@@ -37,7 +37,7 @@ type State = {
 class VideoBrick extends React.Component<Props, State> {
   static propTypes = {
     link: PropTypes.string.isRequired,
-    playing: PropTypes.bool,
+    playing: PropTypes.bool.isRequired,
     autoplay: PropTypes.bool.isRequired,
     loop: PropTypes.bool.isRequired,
     mute: PropTypes.bool.isRequired,
@@ -45,6 +45,7 @@ class VideoBrick extends React.Component<Props, State> {
     pictureLink: PropTypes.string,
     pictureTitle: PropTypes.string,
     pictureAlt: PropTypes.string,
+    ratio: PropTypes.string.isRequired,
     handleProgress: PropTypes.func,
     handlePlay: PropTypes.func,
     handlePause: PropTypes.func,
@@ -58,13 +59,14 @@ class VideoBrick extends React.Component<Props, State> {
     loop: false,
     mute: false,
     hideControls: false,
+    ratio: 'landscape_ratio16x9',
   };
 
   state = {
     playing: this.props.playing || this.props.autoplay,
     playedSeconds: 0,
     duration: 0,
-    showPoster: !this.props.playing,
+    showPoster: !this.props.autoplay && !this.props.playing,
   };
 
   _handlePlay = () => {
@@ -87,7 +89,7 @@ class VideoBrick extends React.Component<Props, State> {
   _handleProgress = ({ playedSeconds, played }: { playedSeconds: number, played: number }) => {
     this.setState(prevState => ({ playedSeconds }));
     if (this.props.handleProgress) {
-      this.props.handleProgress(this.state.playedSeconds, played);
+      this.props.handleProgress(this.state.playedSeconds);
     }
   };
 
@@ -115,8 +117,35 @@ class VideoBrick extends React.Component<Props, State> {
     }
   }
 
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
+    if (
+      this.props.link !== nextProps.link ||
+      this.props.loop !== nextProps.loop ||
+      this.props.mute !== nextProps.mute ||
+      this.props.hideControls !== nextProps.hideControls ||
+      this.props.pictureLink !== nextProps.pictureLink ||
+      this.props.pictureTitle !== nextProps.pictureTitle ||
+      this.props.pictureAlt !== nextProps.pictureAlt ||
+      this.props.ratio !== nextProps.ratio ||
+      this.state.playing !== nextState.playing ||
+      this.state.showPoster !== nextState.showPoster
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
-    const { link, loop, mute, hideControls, pictureLink, pictureTitle, pictureAlt } = this.props;
+    const {
+      link,
+      loop,
+      mute,
+      hideControls,
+      pictureLink,
+      pictureTitle,
+      pictureAlt,
+      ratio,
+    } = this.props;
     const { playing, showPoster } = this.state;
     const content = [
       <MediaContext.Consumer key="player">
@@ -139,32 +168,22 @@ class VideoBrick extends React.Component<Props, State> {
         )}
       </MediaContext.Consumer>,
     ];
-    if (showPoster) {
+    if (showPoster && pictureLink) {
       content.unshift(<PlayButton key="playbutton" handleClick={this._handlePlay} />);
-      if (pictureLink) {
-        content.unshift(
-          <MediaContext.Consumer key="poster">
-            {({ getMediaUrl }) => (
-              <PosterBox>
-                <Picture
-                  link={pictureLink}
-                  ratio="landscape_ratio16x9"
-                  title={pictureTitle}
-                  alt={pictureAlt}
-                  stretch={true}
-                />
-              </PosterBox>
-            )}
-          </MediaContext.Consumer>
-        );
-      }
+      content.unshift(
+        <PosterBox key="poster">
+          <Picture
+            link={pictureLink}
+            ratio={ratio}
+            title={pictureTitle}
+            alt={pictureAlt}
+            stretch={true}
+          />
+        </PosterBox>
+      );
     }
 
-    return (
-      <Wrapper>
-        <TeaserBox>{content}</TeaserBox>
-      </Wrapper>
-    );
+    return <Wrapper>{content}</Wrapper>;
   }
 }
 

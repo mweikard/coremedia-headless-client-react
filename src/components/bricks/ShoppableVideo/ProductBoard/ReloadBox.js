@@ -1,36 +1,16 @@
 // @flow
-// import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-import { media } from '../../../../styles/themes/utils';
-
-const ReloadBox = styled.div`
-  display: none;
-  ${props => media(props.theme.breakpoints.tablet)`
-    display: block;
-    position: absolute;
-    bottom: 3px;
-    left: 0;
-    z-index: 9999;
-  `};
-`;
-
-ReloadBox.displayName = 'ReloadBox';
-
-/*ReloadBox.propTypes = {
-  theme: PropTypes.shape({
-    breakpoints: PropTypes.shape({
-      tablet: PropTypes.number.isRequired,
-    }).isRequired,
-  }),
-};*/
-
-ReloadBox.defaultProps = {
-  theme: {
-    breakpoints: {
-      tablet: 768,
-    },
+const styles = (theme, props) => ({
+  display: 'none',
+  [theme.breakpoints.min('sm')]: {
+    display: 'block',
+    position: 'absolute',
+    bottom: '3px',
+    left: 0,
+    zIndex: 9999,
   },
-};
+});
 
-export default ReloadBox;
+export default withStyles(styles, 'ShoppableVideoProductBoardReloadBox')(Box);

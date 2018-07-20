@@ -2,8 +2,8 @@
 
 exports[`TextBox Component should render correctly 1`] = `
 .c0 {
-  color: #fafafa;
-  background-color: rgba(239,223,15,1);
+  color: rgba(0,0,0,0.87);
+  background-color: rgb(255,255,255);
   text-align: center;
 }
 
@@ -19,6 +19,7 @@ exports[`TextBox Component should render correctly 1`] = `
 
 <div
   className="c0"
+  color="white"
 >
   Content
 </div>

@@ -37,6 +37,7 @@ const composeContent = ({
     content.push(
       <Overlay
         key="overlay"
+        variant="hero"
         fixed={false}
         width={70}
         height="auto"

@@ -1,7 +1,6 @@
 // @flow
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withTheme } from 'styled-components';
 import { Transition, TransitionGroup } from 'react-transition-group';
 import Media from 'react-media';
 
@@ -11,6 +10,7 @@ import Container from './Container';
 import ReloadCard from './ReloadCard';
 import ReloadBox from './ReloadBox';
 import ReloadButton from './ReloadButton';
+import withTheme from '../../../styles/withTheme';
 
 type Props = {
   thumbnails: Array<Object>,
@@ -33,7 +33,7 @@ const ProductBoard = ({
         <ReloadButton handleClick={handleReplay} />
       </ReloadBox>
       <Wrapper>
-        <Media query={`(min-width: ${theme.breakpoints.tablet}px)`}>
+        <Media query={`(min-width: ${theme.breakpoints.values.sm}px)`}>
           {matches =>
             matches ? (
               <TransitionGroup
@@ -88,7 +88,7 @@ const ProductBoard = ({
   );
 };
 
-const Wrapped = withTheme(ProductBoard);
+const Wrapped = withTheme()(ProductBoard);
 
 Wrapped.propTypes = {
   thumbnails: PropTypes.arrayOf(PropTypes.object).isRequired,

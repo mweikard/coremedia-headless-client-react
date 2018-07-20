@@ -1,9 +1,33 @@
 // @flow
-import Button from './Button';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
-const LinkButton = Button.withComponent('a').extend`
-  display: inline-block;
-`;
-LinkButton.displayName = 'LinkButton';
+import withStyles from '../../styles/withStyles';
 
-export default LinkButton;
+type Props = {
+  className: string,
+  ariaLabel: string,
+  onClick: (ev: SyntheticEvent<HTMLButtonElement>) => void,
+  children: React.Node,
+};
+
+const LinkButton = ({ ariaLabel, className, onClick, children }: Props) => (
+  <a role="button" aria-label={ariaLabel} className={className} onClick={onClick}>
+    {children}
+  </a>
+);
+
+LinkButton.displayName = 'BasicLinkButton';
+
+LinkButton.propTypes = {
+  className: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+const styles = {
+  display: 'inline-block',
+};
+
+export default withStyles(styles, 'BasicLinkButton')(LinkButton);

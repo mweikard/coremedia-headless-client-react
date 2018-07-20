@@ -1,12 +1,11 @@
 // @flow
-import { Button as BasicButton, LinkButton as BasicLinkButton } from '../../basic/Button/';
+import { Button } from '../../basic/Button/';
+import { getColors } from '../../styles/utils';
+import withStyles from '../../styles/withStyles';
 
-const Button = BasicButton.extend`
-  margin-top: 1em;
-`;
+const styles = (theme, props) => ({
+  marginTop: '1rem',
+  color: getColors(theme.palette, props.color).text,
+});
 
-const LinkButton = BasicLinkButton.extend`
-  margin-top: 1em;
-`;
-
-export { Button, LinkButton };
+export default withStyles(styles, 'CTA')(Button);

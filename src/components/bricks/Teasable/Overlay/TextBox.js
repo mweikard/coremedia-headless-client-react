@@ -1,15 +1,15 @@
 // @flow
 import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const TextBox = Box.extend`
-  text-align: center;
-  & :first-child {
-    margin-top: 0.6em;
-  }
-  & :last-child {
-    margin-bottom: 0.6em;
-  }
-`;
-TextBox.displayName = 'TextBox';
+const styles = {
+  textAlign: 'center',
+  '& :first-child': {
+    marginTop: '0.6em',
+  },
+  '& :last-child': {
+    marginBottom: '0.6em',
+  },
+};
 
-export default TextBox;
+export default withStyles(styles, 'TeaserOverlayTextBox')(Box);

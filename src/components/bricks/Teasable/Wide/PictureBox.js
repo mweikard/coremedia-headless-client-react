@@ -1,20 +1,12 @@
 // @flow
-import styled from 'styled-components';
-import { media } from '../../../../styles/themes/utils';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const PictureBox = styled.div`
-  width: 100%;
-  ${props => media(props.theme.breakpoints.tablet)`width: 50%;`};
-`;
-
-PictureBox.displayName = 'PictureBox';
-
-PictureBox.defaultProps = {
-  theme: {
-    breakpoints: {
-      tablet: 768,
-    },
+const styles = (theme, props) => ({
+  width: '100%',
+  [theme.breakpoints.min('sm')]: {
+    width: '50%',
   },
-};
+});
 
-export default PictureBox;
+export default withStyles(styles, 'TeaserWidePictureBox')(Box);

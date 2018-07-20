@@ -1,38 +1,35 @@
 // @flow
-import styled from 'styled-components';
-import theme from 'styled-theming';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const color = theme('name', {
-  default: 'rgba(0, 108, 174, 1)',
-  hkm: '#fabfc0',
-});
+import { getColors } from '../../../styles/utils';
+import withStyles from '../../../styles/withStyles';
 
-const Bar = styled.hr.attrs({
-  'aria-hidden': true,
-})`
-  position: relative;
-  left: ${props => `${props.posX}px`};
-  width: ${props => `${props.width}px`};
-  margin: 0;
-  border-width: 0 0 3px;
-  border-style: none none solid;
-  border-color: ${props => (props.width ? color : 'transparent')};
-  transition: ${props => (props.posX && props.width ? 'all' : 'border-color')} 0.6s ease-out 0s;
-`;
-Bar.displayName = 'Bar';
-
-/*Bar.propTypes = {
-  posX: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
-  theme: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  }),
-};*/
-
-Bar.defaultProps = {
-  theme: {
-    name: 'default',
-  },
+type Props = {
+  className: string,
 };
 
-export default Bar;
+const Bar = ({ className }: Props) => <hr aria-hidden="true" className={className} />;
+
+Bar.displayName = 'ShoppableVideoThumbnailBarBar';
+
+const styles = (theme, props) => ({
+  position: 'relative',
+  left: `${props.posX}px`,
+  width: `${props.width}px`,
+  margin: 0,
+  borderWidth: '0 0 3px',
+  borderStyle: 'none none solid',
+  borderColor: props.width ? getColors(theme.palette, 'primary').color : 'transparent',
+  transition: `${props.posX && props.width ? 'all' : 'border-color'} 0.6s ease-out 0s`,
+});
+
+const Wrapper = withStyles(styles, 'ShoppableVideoThumbnailBarBar')(Bar);
+
+Wrapper.propTypes = {
+  posX: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  color: PropTypes.string,
+};
+
+export default Wrapper;

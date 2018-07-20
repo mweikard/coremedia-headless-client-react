@@ -106,7 +106,15 @@ exports[`Modal Component should render correctly 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
+      },
+      "palette": Object {
+        "overlay": Object {
+          "color": "rgba(173,173,173,0.9)",
+        },
+        "surface": Object {
+          "color": "#fff",
+        },
       },
     }
   }

@@ -43,7 +43,7 @@ exports[`Picture Component headless context should render correctly 1`] = `
 </picture>
 `;
 
-exports[`Picture Component headless context should render correctly and skip breakpoint large 1`] = `
+exports[`Picture Component headless context should render correctly and skip breakpoint lg 1`] = `
 <picture>
   <source
     key="0"
@@ -77,7 +77,7 @@ exports[`Picture Component headless context should render correctly and skip bre
 </picture>
 `;
 
-exports[`Picture Component headless context should render correctly with ratio thumbnail 1`] = `
+exports[`Picture Component headless context should render correctly with responsive=false 1`] = `
 <BasicImg
   src="http://127.0.0.1:8080/caas/v1/coremedia/sites/caassiopeia-en-DE/media/2662/data?ratio=thumbnail&minWidth=77"
   title="Scrum"

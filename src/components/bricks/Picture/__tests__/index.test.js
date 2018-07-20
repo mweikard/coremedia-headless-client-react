@@ -115,14 +115,20 @@ describe('Picture Component', () => {
       );
       expect(wrapper.shallow()).toMatchSnapshot();
     });
-    it('should render correctly with ratio thumbnail', () => {
+    it('should render correctly with responsive=false', () => {
       const Picture = getPictureWithContext('headless');
       const wrapper = shallow(
-        <Picture color="red" link="coremedia:///image/2662/data" ratio="thumbnail" title="Scrum" />
+        <Picture
+          color="red"
+          link="coremedia:///image/2662/data"
+          ratio="thumbnail"
+          title="Scrum"
+          responsive={false}
+        />
       );
       expect(wrapper.shallow()).toMatchSnapshot();
     });
-    it('should render correctly and skip breakpoint large', () => {
+    it('should render correctly and skip breakpoint lg', () => {
       const Picture = getPictureWithContext('headless');
       const wrapper = shallow(
         <Picture

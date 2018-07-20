@@ -1,8 +1,7 @@
 // @flow
-import { P } from '../../../basic/Paragraph';
+import { Title6 } from '../../../basic/Heading';
+import withStyles from '../../../styles/withStyles';
 
-const ProductPrice = P.extend``;
+Title6.displayName = 'ShoppableVideoProductCardProductPrice';
 
-ProductPrice.displayName = 'ProductPrice';
-
-export default ProductPrice;
+export default withStyles({}, Title6.displayName)(Title6);

@@ -11,7 +11,7 @@ type Props = {
 const PlayButton = ({ handleClick }: Props) => <PlayIcon onClick={handleClick} />;
 
 PlayButton.propTypes = {
-  handleClick: PropTypes.func,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default PlayButton;

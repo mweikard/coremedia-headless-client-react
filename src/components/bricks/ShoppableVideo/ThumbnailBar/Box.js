@@ -1,11 +1,10 @@
 // @flow
-import styled from 'styled-components';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const ThumbnailsBox = styled.div`
-  display: inline-block;
-  white-space: nowrap;
-`;
+const styles = {
+  display: 'inline-block',
+  whiteSpace: 'nowrap',
+};
 
-ThumbnailsBox.displayName = 'ThumbnailsBox';
-
-export default ThumbnailsBox;
+export default withStyles(styles, 'ShoppableVideoThumbnailBarBox')(Box);

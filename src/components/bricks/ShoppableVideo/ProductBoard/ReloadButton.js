@@ -4,34 +4,18 @@ import PropTypes from 'prop-types';
 
 import { IconButton as BasicIconButton } from '../../../basic/Button';
 import RepeatIcon from '../../../basic/Icon/RepeatIcon';
-import { media } from '../../../../styles/themes/utils';
+import withStyles from '../../../styles/withStyles';
 
-const IconButton = BasicIconButton.extend`
-  width: 100%;
-  height: auto;
-  ${props => media(props.theme.breakpoints.tablet)`
-    width: 40px;
-    height: 40px;
-  `};
-`;
-
-IconButton.displayName = 'IconButton';
-
-IconButton.propTypes = {
-  theme: PropTypes.shape({
-    breakpoints: PropTypes.shape({
-      tablet: PropTypes.number.isRequired,
-    }).isRequired,
-  }),
-};
-
-IconButton.defaultProps = {
-  theme: {
-    breakpoints: {
-      tablet: 768,
-    },
+const styles = (theme, props) => ({
+  width: '100%',
+  height: 'auto',
+  [theme.breakpoints.min('sm')]: {
+    width: '40px',
+    height: '40px',
   },
-};
+});
+
+const IconButton = withStyles(styles, 'ShoppableVideoProductBoardReloadButton')(BasicIconButton);
 
 type Props = {
   id?: string,

@@ -7,11 +7,8 @@ exports[`ProductCard Component should render correctly 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "desktop": 992,
-        "large": 1280,
-        "tablet": 768,
+        "min": [Function],
       },
-      "name": "default",
     }
   }
 >
@@ -19,11 +16,8 @@ exports[`ProductCard Component should render correctly 1`] = `
     theme={
       Object {
         "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+          "min": [Function],
         },
-        "name": "default",
       }
     }
   >
@@ -39,22 +33,20 @@ exports[`ProductCard Component should render correctly 1`] = `
         title="Picture Title 1"
       />
     </LinkButton>
-    <ProductInfo
-      theme={
-        Object {
-          "name": "default",
-        }
-      }
-    >
+    <ProductInfo>
       <ProductName
         theme={
           Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "tablet": 768,
+            "typography": Object {
+              "title6": Object {
+                "color": "#000",
+                "fontFamily": "Helvetica, Arial, sans-serif",
+                "fontSize": "1rem",
+                "fontWeight": 300,
+                "lineHeight": "1.1em",
+                "textTransform": "uppercase",
+              },
             },
-            "name": "default",
           }
         }
       >
@@ -63,12 +55,16 @@ exports[`ProductCard Component should render correctly 1`] = `
       <ProductPrice
         theme={
           Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "tablet": 768,
+            "typography": Object {
+              "title6": Object {
+                "color": "#000",
+                "fontFamily": "Helvetica, Arial, sans-serif",
+                "fontSize": "1rem",
+                "fontWeight": 300,
+                "lineHeight": "1.1em",
+                "textTransform": "uppercase",
+              },
             },
-            "name": "default",
           }
         }
       >
@@ -80,9 +76,8 @@ exports[`ProductCard Component should render correctly 1`] = `
       theme={
         Object {
           "breakpoints": Object {
-            "tablet": 768,
+            "min": [Function],
           },
-          "name": "default",
         }
       }
     >
@@ -90,13 +85,15 @@ exports[`ProductCard Component should render correctly 1`] = `
         onClick={[MockFunction handleClick]}
         theme={
           Object {
-            "breakpoints": Object {
-              "desktop": 992,
-              "large": 1280,
-              "small": 480,
-              "tablet": 768,
+            "typography": Object {
+              "button": Object {
+                "color": "#000",
+                "fontFamily": "Helvetica, Arial, sans-serif",
+                "fontSize": "1rem",
+                "fontWeight": 500,
+                "textTransform": "none",
+              },
             },
-            "name": "default",
           }
         }
       >

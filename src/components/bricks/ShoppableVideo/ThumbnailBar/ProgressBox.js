@@ -1,9 +1,9 @@
 // @flow
-import styled from 'styled-components';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const ProgressBox = styled.div`
-  width: 100%;
-`;
-ProgressBox.displayName = 'ProgressBox';
+const styles = {
+  width: '100%',
+};
 
-export default ProgressBox;
+export default withStyles(styles, 'ShoppableVideoThumbnailBarProgressBox')(Box);

@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import Thumbnail from './Thumbnail';
@@ -15,6 +15,7 @@ type Props = {
   prevItems: number,
   range: number,
   thumbWidth: number,
+  ratio?: string,
 };
 
 const ThumbnailBar = ({
@@ -24,6 +25,7 @@ const ThumbnailBar = ({
   prevItems,
   range,
   thumbWidth,
+  ratio,
 }: Props) => {
   const posX = prevItems * thumbWidth;
   const width = range * thumbWidth;
@@ -41,6 +43,7 @@ const ThumbnailBar = ({
               pictureLink={item.pictureLink}
               pictureTitle={item.pictureTitle}
               pictureAlt={item.pictureAlt}
+              ratio={ratio}
             />
           ))}
         </Box>

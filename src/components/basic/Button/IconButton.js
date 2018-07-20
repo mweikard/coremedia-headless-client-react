@@ -1,35 +1,53 @@
 // @flow
-import type { ComponentType } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+
+import withStyles from '../../styles/withStyles';
 
 type Props = {
-  color?: string,
-  backgroundColor?: string,
+  className: string,
+  onClick: (event: SyntheticEvent<HTMLButtonElement>) => void,
+  tabIndex?: number,
+  children: React.Node,
 };
 
-const IconButton: ComponentType<Props> = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 7px;
-  margin: 0;
-  border-style: none;
-  border-radius: 50%;
-  border-width: 0;
-  outline: none;
-  color: ${props => props.color || 'inherit'};
-  background-color: ${props => props.backgroundColor || 'transparent'};
-  cursor: pointer;
-`;
+const IconButton = ({ className, onClick, tabIndex, children }: Props) => (
+  <button type="button" tabIndex={tabIndex} className={className} onClick={onClick}>
+    {children}
+  </button>
+);
 
-IconButton.displayName = 'IconButton';
+IconButton.displayName = 'BaseIconButton';
 
 IconButton.propTypes = {
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  tabIndex: PropTypes.number,
+  children: PropTypes.node.isRequired,
+};
+
+const styles = (theme, props) => ({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '40px',
+  height: '40px',
+  padding: '7px',
+  margin: 0,
+  borderStyle: 'none',
+  borderRadius: '50%',
+  borderWidth: 0,
+  outline: 'none',
+  color: props.color || 'inherit',
+  backgroundColor: props.backgroundColor || 'transparent',
+  cursor: 'pointer',
+});
+
+const Wrapper = withStyles(styles, 'BaseIconButton')(IconButton);
+
+Wrapper.propTypes = {
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
 };
 
-export default IconButton;
+export default Wrapper;

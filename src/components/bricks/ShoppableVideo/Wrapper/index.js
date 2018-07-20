@@ -1,15 +1,14 @@
 // @flow
-import styled from 'styled-components';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  line-height: 0;
-  transition: all 0.6s linear 0s;
-`;
+const styles = {
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'stretch',
+  lineHeight: 0,
+  transition: 'all 0.6s linear 0s',
+};
 
-Wrapper.displayName = 'Wrapper';
-
-export default Wrapper;
+export default withStyles(styles, 'ShoppableVideoWrapper')(Box);

@@ -4,30 +4,7 @@ exports[`Detail Component should render Detail Abstract and Richtext 1`] = `
 Array [
   <Abstract
     color="blue"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Using the Headless API you can generate ready-to-go HTML content fragments or dynamic Javascript modules. You can then easily insert these fragments into any webpage or single-page application. Use these fragments to seamlessly integrate, reuse, syndicate or publish your content from your CoreMedia CMS anywhere.",
-      }
-    }
     key="abstract"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
-        },
-        "colors": Object {
-          "default": Object {
-            "bgsolid": "rgba(239, 223, 15, 1)",
-            "bgtrans": "rgba(239, 223, 15, 0.7)",
-            "fg": "#fafafa",
-            "huerotation": "5deg",
-          },
-        },
-        "name": "default",
-      }
-    }
   />,
   <RichtextBrick
     color="blue"
@@ -41,30 +18,7 @@ exports[`Detail Component should render Detail with Abstract 1`] = `
 Array [
   <Abstract
     color="blue"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Using the Headless API you can generate ready-to-go HTML content fragments or dynamic Javascript modules. You can then easily insert these fragments into any webpage or single-page application. Use these fragments to seamlessly integrate, reuse, syndicate or publish your content from your CoreMedia CMS anywhere.",
-      }
-    }
     key="abstract"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
-        },
-        "colors": Object {
-          "default": Object {
-            "bgsolid": "rgba(239, 223, 15, 1)",
-            "bgtrans": "rgba(239, 223, 15, 0.7)",
-            "fg": "#fafafa",
-            "huerotation": "5deg",
-          },
-        },
-        "name": "default",
-      }
-    }
   />,
 ]
 `;
@@ -96,30 +50,7 @@ Array [
   />,
   <Abstract
     color="blue"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Using the Headless API you can generate ready-to-go HTML content fragments or dynamic Javascript modules. You can then easily insert these fragments into any webpage or single-page application. Use these fragments to seamlessly integrate, reuse, syndicate or publish your content from your CoreMedia CMS anywhere.",
-      }
-    }
     key="abstract"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
-        },
-        "colors": Object {
-          "default": Object {
-            "bgsolid": "rgba(239, 223, 15, 1)",
-            "bgtrans": "rgba(239, 223, 15, 0.7)",
-            "fg": "#fafafa",
-            "huerotation": "5deg",
-          },
-        },
-        "name": "default",
-      }
-    }
   />,
 ]
 `;
@@ -156,30 +87,7 @@ Array [
   />,
   <Abstract
     color="blue"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Using the Headless API you can generate ready-to-go HTML content fragments or dynamic Javascript modules. You can then easily insert these fragments into any webpage or single-page application. Use these fragments to seamlessly integrate, reuse, syndicate or publish your content from your CoreMedia CMS anywhere.",
-      }
-    }
     key="abstract"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
-        },
-        "colors": Object {
-          "default": Object {
-            "bgsolid": "rgba(239, 223, 15, 1)",
-            "bgtrans": "rgba(239, 223, 15, 0.7)",
-            "fg": "#fafafa",
-            "huerotation": "5deg",
-          },
-        },
-        "name": "default",
-      }
-    }
   />,
   <RichtextBrick
     color="blue"
@@ -205,12 +113,16 @@ Array [
     key="title"
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title1": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": "1.6em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   />,
@@ -223,41 +135,22 @@ Array [
     key="title"
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title1": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": "1.6em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   />,
   <Abstract
     color="blue"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Using the Headless API you can generate ready-to-go HTML content fragments or dynamic Javascript modules. You can then easily insert these fragments into any webpage or single-page application. Use these fragments to seamlessly integrate, reuse, syndicate or publish your content from your CoreMedia CMS anywhere.",
-      }
-    }
     key="abstract"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
-        },
-        "colors": Object {
-          "default": Object {
-            "bgsolid": "rgba(239, 223, 15, 1)",
-            "bgtrans": "rgba(239, 223, 15, 0.7)",
-            "fg": "#fafafa",
-            "huerotation": "5deg",
-          },
-        },
-        "name": "default",
-      }
-    }
   />,
 ]
 `;
@@ -268,12 +161,16 @@ Array [
     key="title"
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title1": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": "1.6em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   />,
@@ -295,12 +192,16 @@ Array [
     key="title"
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title1": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": "1.6em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   />,
@@ -318,41 +219,22 @@ Array [
     key="title"
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title1": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": "1.6em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   />,
   <Abstract
     color="blue"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Using the Headless API you can generate ready-to-go HTML content fragments or dynamic Javascript modules. You can then easily insert these fragments into any webpage or single-page application. Use these fragments to seamlessly integrate, reuse, syndicate or publish your content from your CoreMedia CMS anywhere.",
-      }
-    }
     key="abstract"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
-        },
-        "colors": Object {
-          "default": Object {
-            "bgsolid": "rgba(239, 223, 15, 1)",
-            "bgtrans": "rgba(239, 223, 15, 0.7)",
-            "fg": "#fafafa",
-            "huerotation": "5deg",
-          },
-        },
-        "name": "default",
-      }
-    }
   />,
   <RichtextBrick
     color="blue"
@@ -368,12 +250,16 @@ Array [
     key="title"
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title1": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": "1.6em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   />,
@@ -388,30 +274,7 @@ Array [
   />,
   <Abstract
     color="blue"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Using the Headless API you can generate ready-to-go HTML content fragments or dynamic Javascript modules. You can then easily insert these fragments into any webpage or single-page application. Use these fragments to seamlessly integrate, reuse, syndicate or publish your content from your CoreMedia CMS anywhere.",
-      }
-    }
     key="abstract"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
-        },
-        "colors": Object {
-          "default": Object {
-            "bgsolid": "rgba(239, 223, 15, 1)",
-            "bgtrans": "rgba(239, 223, 15, 0.7)",
-            "fg": "#fafafa",
-            "huerotation": "5deg",
-          },
-        },
-        "name": "default",
-      }
-    }
   />,
 ]
 `;
@@ -422,12 +285,16 @@ Array [
     key="title"
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title1": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": "1.6em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   />,
@@ -454,12 +321,16 @@ Array [
     key="title"
     theme={
       Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
+        "typography": Object {
+          "title1": Object {
+            "color": "#000",
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "6rem",
+            "fontWeight": 300,
+            "lineHeight": "1.6em",
+            "textTransform": "uppercase",
+          },
         },
-        "name": "default",
       }
     }
   />,
@@ -474,30 +345,7 @@ Array [
   />,
   <Abstract
     color="blue"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Using the Headless API you can generate ready-to-go HTML content fragments or dynamic Javascript modules. You can then easily insert these fragments into any webpage or single-page application. Use these fragments to seamlessly integrate, reuse, syndicate or publish your content from your CoreMedia CMS anywhere.",
-      }
-    }
     key="abstract"
-    theme={
-      Object {
-        "breakpoints": Object {
-          "desktop": 992,
-          "large": 1280,
-          "tablet": 768,
-        },
-        "colors": Object {
-          "default": Object {
-            "bgsolid": "rgba(239, 223, 15, 1)",
-            "bgtrans": "rgba(239, 223, 15, 0.7)",
-            "fg": "#fafafa",
-            "huerotation": "5deg",
-          },
-        },
-        "name": "default",
-      }
-    }
   />,
   <RichtextBrick
     color="blue"

@@ -11,6 +11,7 @@ exports[`Video Component should render correctly and proxy hideControls prop 1`]
     loop={false}
     mute={false}
     playing={false}
+    ratio="landscape_ratio16x9"
   />
 </VideoBox>
 `;
@@ -26,6 +27,7 @@ exports[`Video Component should render correctly and proxy link prop 1`] = `
     loop={false}
     mute={false}
     playing={false}
+    ratio="landscape_ratio16x9"
   />
 </VideoBox>
 `;
@@ -41,6 +43,7 @@ exports[`Video Component should render correctly and proxy loop prop 1`] = `
     loop={false}
     mute={false}
     playing={false}
+    ratio="landscape_ratio16x9"
   />
 </VideoBox>
 `;
@@ -56,6 +59,7 @@ exports[`Video Component should render correctly and proxy mute prop 1`] = `
     loop={false}
     mute={false}
     playing={false}
+    ratio="landscape_ratio16x9"
   />
 </VideoBox>
 `;
@@ -74,6 +78,7 @@ exports[`Video Component should render correctly and proxy pictureLink, pictureA
     pictureLink="coremedia:///image/6188/data"
     pictureTitle="Title"
     playing={false}
+    ratio="landscape_ratio16x9"
   />
 </VideoBox>
 `;
@@ -89,6 +94,7 @@ exports[`Video Component should render correctly and proxy playing prop 1`] = `
     loop={false}
     mute={false}
     playing={false}
+    ratio="landscape_ratio16x9"
   />
 </VideoBox>
 `;

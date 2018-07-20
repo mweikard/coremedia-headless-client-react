@@ -34,19 +34,20 @@ type Props = {
   stretch?: boolean,
   title?: string,
   alt?: string,
+  responsive?: boolean,
 };
 
-const PictureBrick = ({ link, ratio, stretch, title, alt }: Props) => (
+const PictureBrick = ({ link, ratio, stretch, title, alt, responsive = true }: Props) => (
   <MediaContext.Consumer>
     {({ getMediaUrl, imageRatios }) => {
       const { minWidth, dimensions } = (imageRatios && imageRatios[ratio]) || {};
-      return ratio === 'thumbnail' ? (
-        <Img src={getMediaUrl(link, ratio, minWidth)} alt={alt} title={title} stretch={stretch} />
-      ) : (
+      return responsive ? (
         <picture>
           {getImageSources(getMediaUrl, link, ratio, dimensions)}
           <Img src={getMediaUrl(link, ratio, minWidth)} alt={alt} title={title} stretch={stretch} />
         </picture>
+      ) : (
+        <Img src={getMediaUrl(link, ratio, minWidth)} alt={alt} title={title} stretch={stretch} />
       );
     }}
   </MediaContext.Consumer>
@@ -57,7 +58,7 @@ PictureBrick.propTypes = {
   ratio: PropTypes.string.isRequired,
   stretch: PropTypes.bool,
   title: PropTypes.string,
-  alt: PropTypes.string,
+  alt: PropTypes.string.isRequired,
 };
 
 export default PictureBrick;

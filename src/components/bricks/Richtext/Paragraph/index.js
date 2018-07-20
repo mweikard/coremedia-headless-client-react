@@ -1,9 +1,9 @@
 // @flow
-import { P as BasicParagraph } from '../../../basic/Paragraph';
+import P from '../../../basic/Paragraph';
+import withStyles from '../../../styles/withStyles';
 
-const P = BasicParagraph.extend`
-  margin-top: 0.5em;
-`;
-P.displayName = 'P';
+const styles = {
+  marginTop: '0.5em',
+};
 
-export { P };
+export default withStyles(styles, 'RichtextParagraph')(P);

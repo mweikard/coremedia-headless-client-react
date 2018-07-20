@@ -1,13 +1,12 @@
 // @flow
 import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const ProductInfo = Box.extend`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 5px;
-`;
+const styles = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '10px 5px',
+};
 
-ProductInfo.displayName = 'ProductInfo';
-
-export default ProductInfo;
+export default withStyles(styles, 'ShoppableVideoProductCardProductInfo')(Box);

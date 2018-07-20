@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import memoize from 'memoize-one';
@@ -20,6 +20,12 @@ type Props = {
   pictureTitle?: string,
   pictureAlt?: string,
   timeLine: Object,
+  ratios?: {
+    thumbnail?: string,
+    productCard?: string,
+    quickInfo?: string,
+    poster?: string,
+  },
 };
 
 type State = {
@@ -51,7 +57,7 @@ type State = {
   },
 };
 
-class ShoppableVideoBrick extends React.PureComponent<Props, State> {
+class ShoppableVideoBrick extends React.Component<Props, State> {
   static propTypes = {
     link: PropTypes.string.isRequired,
     autoplay: PropTypes.bool,
@@ -62,6 +68,12 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
     pictureTitle: PropTypes.string,
     pictureAlt: PropTypes.string,
     timeLine: PropTypes.object,
+    ratios: PropTypes.shape({
+      thumbnail: PropTypes.string,
+      productCard: PropTypes.string,
+      quickInfo: PropTypes.string,
+      poster: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
@@ -174,7 +186,7 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
     index: number,
     item: Object,
     videoEnded: boolean,
-    selectedItemId: string,
+    selectedItemId: ?string,
     currentIndex: number
   ) => {
     const id = `${item._id}_${index}`;
@@ -385,7 +397,16 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { link, loop, mute, hideControls, pictureLink, pictureTitle, pictureAlt } = this.props;
+    const {
+      link,
+      loop,
+      mute,
+      hideControls,
+      pictureLink,
+      pictureTitle,
+      pictureAlt,
+      ratios,
+    } = this.props;
     const { video, thumbnailBar, productBoard, data } = this.state;
     const thumbnails = this._getThumbnails(
       data.sequences,
@@ -393,6 +414,7 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
       thumbnailBar.selectedItem && thumbnailBar.selectedItem.id,
       thumbnailBar.currentIndex
     );
+
     return (
       <Wrapper innerRef={this._handleWrapperRef}>
         <Video
@@ -405,6 +427,7 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
           pictureLink={pictureLink}
           pictureTitle={pictureTitle}
           pictureAlt={pictureAlt}
+          ratio={ratios && ratios.poster}
           handleProgress={this._handleProgress}
           handlePlay={this._handlePlay}
           handlePause={this._handlePause}
@@ -418,6 +441,7 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
           prevItems={thumbnailBar.prevItems}
           range={thumbnailBar.range}
           thumbWidth={thumbnailBar.thumbWidth}
+          ratio={ratios && ratios.thumbnail}
         />
         {productBoard.display && (
           <ProductBoard
@@ -425,9 +449,14 @@ class ShoppableVideoBrick extends React.PureComponent<Props, State> {
             productboardOverflow={productBoard.overflow}
             handleRef={this._handleProductboardContainerRef}
             handleReplay={this._handlePlay}
+            ratio={ratios && ratios.productCard}
           />
         )}
-        <QuickInfo item={thumbnailBar.selectedItem} handleClose={this._handleCloseQuickInfo} />
+        <QuickInfo
+          item={thumbnailBar.selectedItem}
+          handleClose={this._handleCloseQuickInfo}
+          ratio={ratios && ratios.quickInfo}
+        />
       </Wrapper>
     );
   }

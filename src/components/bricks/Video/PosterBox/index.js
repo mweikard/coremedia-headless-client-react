@@ -1,11 +1,11 @@
 // @flow
-import styled from 'styled-components';
+import { Box } from '../../../basic/Box';
+import withStyles from '../../../styles/withStyles';
 
-const PosterBox = styled.div`
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-`;
-PosterBox.displayName = 'PosterBox';
+const styles = {
+  position: 'absolute',
+  width: '100%',
+  zIndex: 1,
+};
 
-export default PosterBox;
+export default withStyles(styles, 'VideoPosterBox')(Box);

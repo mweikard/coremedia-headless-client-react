@@ -8,35 +8,25 @@ exports[`Overlay Component fixed should render Overlay with CTA 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
+  <TextBox>
     <CTABrick
-      text="Learn more"
+      color="blue"
+      label="Learn more"
     />
   </TextBox>
 </FixedBox>
@@ -50,34 +40,24 @@ exports[`Overlay Component fixed should render Overlay with Text 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Text
+  <TextBox>
+    <Subheader
+      color="blue"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Discover the new CoreMedia Headless Services.",
@@ -85,12 +65,25 @@ exports[`Overlay Component fixed should render Overlay with Text 1`] = `
       }
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
+          "typography": Object {
+            "title6": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "1rem",
+              "fontWeight": 300,
+              "lineHeight": "1.1em",
+              "textTransform": "uppercase",
+            },
+          },
         }
       }
     />
@@ -106,34 +99,24 @@ exports[`Overlay Component fixed should render Overlay with Text and CTA 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Text
+  <TextBox>
+    <Subheader
+      color="blue"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Discover the new CoreMedia Headless Services.",
@@ -141,17 +124,31 @@ exports[`Overlay Component fixed should render Overlay with Text and CTA 1`] = `
       }
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
+          "typography": Object {
+            "title6": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "1rem",
+              "fontWeight": 300,
+              "lineHeight": "1.1em",
+              "textTransform": "uppercase",
+            },
+          },
         }
       }
     />
     <CTABrick
-      text="Learn more"
+      color="blue"
+      label="Learn more"
     />
   </TextBox>
 </FixedBox>
@@ -165,47 +162,40 @@ exports[`Overlay Component fixed should render Overlay with Title 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Headline
+  <TextBox>
+    <Header
+      color="blue"
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
         }
       }
     >
       Content Management at a new Scale with CoreMedia CaaS
-    </Headline>
+    </Header>
   </TextBox>
 </FixedBox>
 `;
@@ -218,49 +208,43 @@ exports[`Overlay Component fixed should render Overlay with Title and CTA 1`] = 
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Headline
+  <TextBox>
+    <Header
+      color="blue"
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
         }
       }
     >
       Content Management at a new Scale with CoreMedia CaaS
-    </Headline>
+    </Header>
     <CTABrick
-      text="Learn more"
+      color="blue"
+      label="Learn more"
     />
   </TextBox>
 </FixedBox>
@@ -274,48 +258,42 @@ exports[`Overlay Component fixed should render Overlay with Title and Text 1`] =
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Headline
+  <TextBox>
+    <Header
+      color="blue"
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
         }
       }
     >
       Content Management at a new Scale with CoreMedia CaaS
-    </Headline>
-    <Text
+    </Header>
+    <Subheader
+      color="blue"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Discover the new CoreMedia Headless Services.",
@@ -323,12 +301,25 @@ exports[`Overlay Component fixed should render Overlay with Title and Text 1`] =
       }
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
+          "typography": Object {
+            "title6": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "1rem",
+              "fontWeight": 300,
+              "lineHeight": "1.1em",
+              "textTransform": "uppercase",
+            },
+          },
         }
       }
     />
@@ -344,48 +335,42 @@ exports[`Overlay Component fixed should render Overlay with Title, Text and CTA 
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Headline
+  <TextBox>
+    <Header
+      color="blue"
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
         }
       }
     >
       Content Management at a new Scale with CoreMedia CaaS
-    </Headline>
-    <Text
+    </Header>
+    <Subheader
+      color="blue"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Discover the new CoreMedia Headless Services.",
@@ -393,17 +378,31 @@ exports[`Overlay Component fixed should render Overlay with Title, Text and CTA 
       }
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
+          "typography": Object {
+            "title6": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "1rem",
+              "fontWeight": 300,
+              "lineHeight": "1.1em",
+              "textTransform": "uppercase",
+            },
+          },
         }
       }
     />
     <CTABrick
-      text="Learn more"
+      color="blue"
+      label="Learn more"
     />
   </TextBox>
 </FixedBox>
@@ -417,35 +416,25 @@ exports[`Overlay Component not fixed should render Overlay with CTA 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
+  <TextBox>
     <CTABrick
-      text="Learn more"
+      color="blue"
+      label="Learn more"
     />
   </TextBox>
 </Box>
@@ -459,34 +448,24 @@ exports[`Overlay Component not fixed should render Overlay with Text 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Text
+  <TextBox>
+    <Subheader
+      color="blue"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Discover the new CoreMedia Headless Services.",
@@ -494,12 +473,25 @@ exports[`Overlay Component not fixed should render Overlay with Text 1`] = `
       }
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
+          "typography": Object {
+            "title6": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "1rem",
+              "fontWeight": 300,
+              "lineHeight": "1.1em",
+              "textTransform": "uppercase",
+            },
+          },
         }
       }
     />
@@ -515,34 +507,24 @@ exports[`Overlay Component not fixed should render Overlay with Text and CTA 1`]
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Text
+  <TextBox>
+    <Subheader
+      color="blue"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Discover the new CoreMedia Headless Services.",
@@ -550,17 +532,31 @@ exports[`Overlay Component not fixed should render Overlay with Text and CTA 1`]
       }
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
+          "typography": Object {
+            "title6": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "1rem",
+              "fontWeight": 300,
+              "lineHeight": "1.1em",
+              "textTransform": "uppercase",
+            },
+          },
         }
       }
     />
     <CTABrick
-      text="Learn more"
+      color="blue"
+      label="Learn more"
     />
   </TextBox>
 </Box>
@@ -574,47 +570,40 @@ exports[`Overlay Component not fixed should render Overlay with Title 1`] = `
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Headline
+  <TextBox>
+    <Header
+      color="blue"
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
         }
       }
     >
       Content Management at a new Scale with CoreMedia CaaS
-    </Headline>
+    </Header>
   </TextBox>
 </Box>
 `;
@@ -627,49 +616,43 @@ exports[`Overlay Component not fixed should render Overlay with Title and CTA 1`
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Headline
+  <TextBox>
+    <Header
+      color="blue"
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
         }
       }
     >
       Content Management at a new Scale with CoreMedia CaaS
-    </Headline>
+    </Header>
     <CTABrick
-      text="Learn more"
+      color="blue"
+      label="Learn more"
     />
   </TextBox>
 </Box>
@@ -683,48 +666,42 @@ exports[`Overlay Component not fixed should render Overlay with Title and Text 1
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Headline
+  <TextBox>
+    <Header
+      color="blue"
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
         }
       }
     >
       Content Management at a new Scale with CoreMedia CaaS
-    </Headline>
-    <Text
+    </Header>
+    <Subheader
+      color="blue"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Discover the new CoreMedia Headless Services.",
@@ -732,12 +709,25 @@ exports[`Overlay Component not fixed should render Overlay with Title and Text 1
       }
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
+          "typography": Object {
+            "title6": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "1rem",
+              "fontWeight": 300,
+              "lineHeight": "1.1em",
+              "textTransform": "uppercase",
+            },
+          },
         }
       }
     />
@@ -753,48 +743,42 @@ exports[`Overlay Component not fixed should render Overlay with Title, Text and 
   theme={
     Object {
       "breakpoints": Object {
-        "tablet": 768,
+        "min": [Function],
       },
-      "colors": Object {
-        "default": Object {
-          "bgsolid": "rgba(239, 223, 15, 1)",
-          "bgtrans": "rgba(239, 223, 15, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "5deg",
+      "palette": Object {
+        "additional": Object {
+          "white": Object {
+            "color": "rgb(255,255,255)",
+            "text": "rgba(0, 0, 0, 0.87)",
+          },
         },
-        "red": Object {
-          "bgsolid": "rgba(221, 52, 40, 1)",
-          "bgtrans": "rgba(221, 52, 40, 0.7)",
-          "fg": "#fafafa",
-          "huerotation": "320deg",
-        },
+        "common": Object {},
       },
     }
   }
   width={70}
 >
-  <TextBox
-    theme={
-      Object {
-        "name": "default",
-      }
-    }
-  >
-    <Headline
+  <TextBox>
+    <Header
+      color="blue"
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
         }
       }
     >
       Content Management at a new Scale with CoreMedia CaaS
-    </Headline>
-    <Text
+    </Header>
+    <Subheader
+      color="blue"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Discover the new CoreMedia Headless Services.",
@@ -802,17 +786,31 @@ exports[`Overlay Component not fixed should render Overlay with Title, Text and 
       }
       theme={
         Object {
-          "breakpoints": Object {
-            "desktop": 992,
-            "large": 1280,
-            "tablet": 768,
+          "palette": Object {
+            "additional": Object {
+              "white": Object {
+                "color": "rgb(255,255,255)",
+                "text": "rgba(0, 0, 0, 0.87)",
+              },
+            },
+            "common": Object {},
           },
-          "name": "default",
+          "typography": Object {
+            "title6": Object {
+              "color": "#000",
+              "fontFamily": "Helvetica, Arial, sans-serif",
+              "fontSize": "1rem",
+              "fontWeight": 300,
+              "lineHeight": "1.1em",
+              "textTransform": "uppercase",
+            },
+          },
         }
       }
     />
     <CTABrick
-      text="Learn more"
+      color="blue"
+      label="Learn more"
     />
   </TextBox>
 </Box>

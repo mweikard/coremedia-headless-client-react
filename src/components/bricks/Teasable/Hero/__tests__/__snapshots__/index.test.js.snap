@@ -21,6 +21,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Link and Overlay 1`]
       fixed={false}
       height="auto"
       key="overlay"
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -69,6 +70,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Link, Picture and Ov
       key="overlay"
       text="Discover the new CoreMedia Headless Services."
       title="Content Management at a new Scale with CoreMedia CaaS"
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -99,6 +101,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Link, Picture and Ov
       key="overlay"
       text="Discover the new CoreMedia Headless Services."
       title="Content Management at a new Scale with CoreMedia CaaS"
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -128,6 +131,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Link, Picture and Ov
       height="auto"
       key="overlay"
       title="Content Management at a new Scale with CoreMedia CaaS"
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -157,6 +161,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Link, Picture and Ov
       height="auto"
       key="overlay"
       text="Discover the new CoreMedia Headless Services."
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -186,6 +191,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Link, Picture and Ov
       height="auto"
       key="overlay"
       text="Discover the new CoreMedia Headless Services."
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -215,6 +221,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Link, Picture and Ov
       height="auto"
       key="overlay"
       title="Content Management at a new Scale with CoreMedia CaaS"
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -243,6 +250,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Link, Picture and Ov
       fixed={false}
       height="auto"
       key="overlay"
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -260,6 +268,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Overlay 1`] = `
       fixed={false}
       height="auto"
       key="overlay"
+      variant="hero"
       width={70}
     />
   </TeaserBox>
@@ -317,6 +326,7 @@ exports[`HeroTeaser Component should render HeroTeaser with Picture and Overlay 
       fixed={false}
       height="auto"
       key="overlay"
+      variant="hero"
       width={70}
     />
   </TeaserBox>

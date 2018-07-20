@@ -1,36 +1,16 @@
 // @flow
 import { Box } from '../../../basic/Box';
-import { media } from '../../../../styles/themes/utils';
+import withStyles from '../../../styles/withStyles';
 
-const ProductBox = Box.extend`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  ${props => media(props.theme.breakpoints.tablet)`
-    flex-direction: row;
-    align-items: start;
-  `};
-`;
-
-ProductBox.displayName = 'ProductBox';
-
-/*ProductBox.propTypes = {
-  theme: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    breakpoints: PropTypes.shape({
-      tablet: PropTypes.number.isRequired,
-    }).isRequired,
-  }),
-};*/
-
-ProductBox.defaultProps = {
-  theme: {
-    name: 'default',
-    breakpoints: {
-      tablet: 768,
-    },
+const styles = (theme, props) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  [theme.breakpoints.min('sm')]: {
+    flexDirection: 'row',
+    alignItems: 'start',
   },
-};
+});
 
-export default ProductBox;
+export default withStyles(styles, 'ShoppableVideoQuickInfoProductBox')(Box);
